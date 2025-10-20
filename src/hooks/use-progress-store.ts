@@ -4,7 +4,8 @@ import { useState, useEffect, useCallback } from 'react';
 import type { ProgressData, Topic, Level, ChallengeResult } from '@/lib/types';
 import { TOPICS, LEVELS } from '@/lib/types';
 
-const PROGRESS_KEY = 'soliditySprintProgress';
+// TODO: Replace with your actual backend API for fetching user progress
+// const API_BASE_URL = 'https://your-backend-api.com/api';
 
 export const useProgressStore = () => {
   const [progress, setProgress] = useState<ProgressData>({});
@@ -12,28 +13,64 @@ export const useProgressStore = () => {
   const [lastResult, setLastResult] = useState<ChallengeResult | null>(null);
 
   useEffect(() => {
-    try {
-      const savedProgress = localStorage.getItem(PROGRESS_KEY);
-      if (savedProgress) {
-        setProgress(JSON.parse(savedProgress));
+    const fetchProgress = async () => {
+      try {
+        // =================================================================
+        // TODO: Implement your backend call to fetch user progress.
+        // You will likely need to pass user authentication details.
+        //
+        // const response = await fetch(`${API_BASE_URL}/progress`, {
+        //   headers: {
+        //     'Authorization': `Bearer YOUR_USER_TOKEN`,
+        //   },
+        // });
+        // if (!response.ok) {
+        //   throw new Error('Failed to fetch progress');
+        // }
+        // const savedProgress = await response.json();
+        // setProgress(savedProgress);
+        // =================================================================
+        
+        // For now, we'll start with empty progress.
+        setProgress({});
+
+      } catch (error) {
+        console.error('Failed to load progress from backend', error);
+      } finally {
+        setIsLoaded(true);
       }
-      const savedLastResult = sessionStorage.getItem('lastChallengeResult');
-      if(savedLastResult) {
-        setLastResult(JSON.parse(savedLastResult));
+    };
+    
+    // Load last result from session storage (this can remain as it's temporary per-session)
+     try {
+        const savedLastResult = sessionStorage.getItem('lastChallengeResult');
+        if(savedLastResult) {
+          setLastResult(JSON.parse(savedLastResult));
+        }
+      } catch (error) {
+        console.error('Failed to load last result from sessionStorage', error);
       }
-    } catch (error) {
-      console.error('Failed to load progress from storage', error);
-    } finally {
-      setIsLoaded(true);
-    }
+
+    fetchProgress();
   }, []);
 
-  const saveProgress = useCallback((newProgress: ProgressData) => {
+  const saveProgress = useCallback(async (newProgress: ProgressData) => {
     try {
-      localStorage.setItem(PROGRESS_KEY, JSON.stringify(newProgress));
+      // =================================================================
+      // TODO: Implement your backend call to save user progress.
+      //
+      // await fetch(`${API_BASE_URL}/progress`, {
+      //   method: 'POST',
+      //   headers: {
+      //     'Content-Type': 'application/json',
+      //     'Authorization': `Bearer YOUR_USER_TOKEN`,
+      //   },
+      //   body: JSON.stringify(newProgress),
+      // });
+      // =================================================================
       setProgress(newProgress);
     } catch (error) {
-      console.error('Failed to save progress to localStorage', error);
+      console.error('Failed to save progress to backend', error);
     }
   }, []);
 
@@ -63,7 +100,7 @@ export const useProgressStore = () => {
     [progress, isLoaded]
   );
   
-  const saveChallengeResult = useCallback((topic: Topic, level: Level, result: ChallengeResult) => {
+  const saveChallengeResult = useCallback(async (topic: Topic, level: Level, result: ChallengeResult) => {
     const newProgress = { ...progress };
     if (!newProgress[topic]) {
       newProgress[topic] = {};
@@ -72,15 +109,20 @@ export const useProgressStore = () => {
     const currentLevelProgress = newProgress[topic]?.[level];
 
     // Only update if the new score is better
+    let shouldUpdate = false;
     if(!currentLevelProgress || result.score > (currentLevelProgress.score || 0)) {
         newProgress[topic]![level] = {
             completed: result.score === result.total,
             score: result.score,
             total: result.total,
         };
+        shouldUpdate = true;
     }
     
-    saveProgress(newProgress);
+    if (shouldUpdate) {
+      await saveProgress(newProgress);
+    }
+
     try {
         sessionStorage.setItem('lastChallengeResult', JSON.stringify(result));
         setLastResult(result);
