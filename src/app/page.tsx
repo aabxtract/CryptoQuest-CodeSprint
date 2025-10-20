@@ -10,9 +10,13 @@ import {
   List,
   Zap,
   ChevronRight,
-  Loader2,
   ShieldCheck,
   Building,
+  FileCode,
+  Library,
+  AlertTriangle,
+  Fuel,
+  Lock,
 } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
@@ -38,6 +42,11 @@ const topicIcons: Record<Topic, React.ElementType> = {
   'Events & Modifiers': Zap,
   'Modifiers & Require': ShieldCheck,
   'Constructor & Inheritance': Building,
+  'Interfaces and Abstract Contracts': FileCode,
+  'Libraries and Using For': Library,
+  'Error Handling and Custom Errors': AlertTriangle,
+  'Gas Optimization and Efficiency': Fuel,
+  'Security Patterns and Best Practices': Lock,
 };
 
 function LevelSelectDialog({

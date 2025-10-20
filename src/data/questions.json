@@ -185,7 +185,7 @@
     "topic": "Mappings & Structs",
     "level": "Intermediate",
     "question": "Complete the struct definition within the contract.",
-    "template": "pragma solidity ^0.8.0;\ncontract UserMapping {\n struct User {\n string name;\n uint age;\n }\n mapping(address => ______) public users;\n}",
+    "template": "pragma solidity ^0.8.0;\ncontract UserMapping {\n struct User {\n string name;\n uint age;\n }\n mapping(address => ____) public users;\n}",
     "correctAnswer": "User",
     "hint": "Reference the struct you just defined as the value type in the mapping.",
     "explanation": "Correct! You are mapping an address to a `User` struct."
@@ -195,7 +195,7 @@
     "topic": "Mappings & Structs",
     "level": "Intermediate",
     "question": "Provide a name for the mapping.",
-    "template": "pragma solidity ^0.8.0;\ncontract Points {\n struct Score {\n uint points;\n }\n mapping(address => Score) public ______;\n}",
+    "template": "pragma solidity ^0.8.0;\ncontract Points {\n struct Score {\n uint points;\n }\n mapping(address => Score) public ____;\n}",
     "correctAnswer": "scores",
     "hint": "Choose a descriptive name for the mapping that holds user scores.",
     "explanation": "Great! `scores` is a fitting name for a mapping that stores `Score` structs."
@@ -205,7 +205,7 @@
     "topic": "Mappings & Structs",
     "level": "Intermediate",
     "question": "Make the `students` mapping accessible from outside the contract.",
-    "template": "pragma solidity ^0.8.0;\ncontract StudentData {\n struct Student {\n string name;\n uint256 grade;\n }\n mapping(uint => Student) ______ students;\n}",
+    "template": "pragma solidity ^0.8.0;\ncontract StudentData {\n struct Student {\n string name;\n uint256 grade;\n }\n mapping(uint => Student) ____ students;\n}",
     "correctAnswer": "public",
     "hint": "Use a visibility specifier to create an automatic getter function.",
     "explanation": "`public` visibility for a mapping allows anyone to query the data."
@@ -215,7 +215,7 @@
     "topic": "Mappings & Structs",
     "level": "Intermediate",
     "question": "Choose a variable name for the private mapping.",
-    "template": "pragma solidity ^0.8.0;\ncontract Registry {\n struct Info {\n string data;\n }\n mapping(address => Info) private ______;\n}",
+    "template": "pragma solidity ^0.8.0;\ncontract Registry {\n struct Info {\n string data;\n }\n mapping(address => Info) private ____;\n}",
     "correctAnswer": "registry",
     "hint": "A common convention is to name the mapping after the contract's purpose.",
     "explanation": "Using `registry` is a clear and concise name for this mapping."
@@ -225,7 +225,7 @@
     "topic": "Mappings & Structs",
     "level": "Intermediate",
     "question": "Specify the value type for the `voters` mapping.",
-    "template": "pragma solidity ^0.8.0;\ncontract VoterList {\n struct Voter {\n bool registered;\n }\n mapping(address => ______) public voters;\n}",
+    "template": "pragma solidity ^0.8.0;\ncontract VoterList {\n struct Voter {\n bool registered;\n }\n mapping(address => ____) public voters;\n}",
     "correctAnswer": "Voter",
     "hint": "The mapping should store the `Voter` struct for each address.",
     "explanation": "Correct! The mapping `voters` will store a `Voter` struct for each address key."
@@ -250,25 +250,54 @@
     "hint": "This function appends an element to a dynamic array.",
     "explanation": "The `.push()` method is used to add an element to the end of a dynamic array."
   },
-  {
-    "id": "a3",
+_int_1",
     "topic": "Arrays & Loops",
     "level": "Intermediate",
-    "question": "Declare a fixed-size memory array of 5 addresses.",
-    "template": "address[5] ____ myAddresses;",
-    "correctAnswer": "memory",
-    "hint": "This keyword specifies that the array's data is stored temporarily during function execution.",
-    "explanation": "The `memory` keyword is required for declaring arrays of complex types (like `address` or `string`) within functions."
+    "question": "Add a new number to the `nums` array.",
+    "template": "pragma solidity ^0.8.0;\ncontract Numbers {\n uint[] public nums;\n function addNumber(uint _num) public {\n nums.____(_num);\n }\n}",
+    "correctAnswer": "push",
+    "hint": "Use this method to append an element to the end of a dynamic array.",
+    "explanation": "The `push` method adds an element to the end of a dynamic array."
   },
   {
-    "id": "a4",
+    "id": "al_int_2",
     "topic": "Arrays & Loops",
     "level": "Intermediate",
-    "question": "Start a for loop that iterates from 0 up to (but not including) 10.",
-    "template": "for (uint i = 0; ____; i++) {}",
-    "correctAnswer": "i < 10",
-    "hint": "The second part of a for loop is the condition that keeps the loop running.",
-    "explanation": "The condition `i < 10` ensures the loop executes 10 times, for `i` from 0 to 9."
+    "question": "Get the number of elements in the `data` array.",
+    "template": "pragma solidity ^0.8.0;\ncontract Counter {\n uint[] public data;\n function count() public view returns(uint) {\n return data.____;\n }\n}",
+    "correctAnswer": "length",
+    "hint": "This property provides the size of the array.",
+    "explanation": "`.length` is used to get the number of elements in an array."
+  },
+  {
+    "id": "al_int_3",
+    "topic": "Arrays & Loops",
+    "level": "Intermediate",
+    "question": "Access the element at the current loop index.",
+    "template": "pragma solidity ^0.8.0;\ncontract Total {\n uint[] public values;\n function sum() public view returns(uint total) {\n for(uint i = 0; i < values.length; i++) {\n total += ____[i];\n }\n }\n}",
+    "correctAnswer": "values",
+    "hint": "Use the name of the array being iterated over.",
+    "explanation": "You need to access the element from the `values` array at index `i`."
+  },
+  {
+    "id": "al_int_4",
+    "topic": "Arrays & Loops",
+    "level": "Intermediate",
+    "question": "Increment the counter variable inside the loop.",
+    "template": "pragma solidity ^0.8.0;\ncontract EvenNumbers {\n uint[] public nums;\n function findEven() public view returns(uint count) {\n for(uint i = 0; i < nums.length; i++) {\n if(nums[i] % 2 == 0) {\n ____++;\n }\n }\n }\n}",
+    "correctAnswer": "count",
+    "hint": "The variable `count` is used to track the number of even numbers found.",
+    "explanation": "Incrementing `count` keeps track of how many even numbers are found in the array."
+  },
+  {
+    "id": "al_int_5",
+    "topic": "Arrays & Loops",
+    "level": "Intermediate",
+    "question": "Access the array element using the provided function parameter.",
+    "template": "pragma solidity ^0.8.0;\ncontract StorageArray {\n uint[5] public fixedArray = [1,2,3,4,5];\n function getElement(uint index) public view returns(uint) {\n return fixedArray[____];\n }\n}",
+    "correctAnswer": "index",
+    "hint": "The `index` parameter determines which element to retrieve.",
+    "explanation": "The `index` variable is used to access a specific element in `fixedArray`."
   },
   {
     "id": "a5",
@@ -291,56 +320,6 @@
     "explanation": "The `.pop()` method is used to remove the last element from a dynamic storage array."
   },
   {
-    "id": "al_int_1",
-    "topic": "Arrays & Loops",
-    "level": "Intermediate",
-    "question": "Add a new number to the `nums` array.",
-    "template": "pragma solidity ^0.8.0;\ncontract Numbers {\n uint[] public nums;\n function addNumber(uint _num) public {\n nums.______(_num);\n }\n}",
-    "correctAnswer": "push",
-    "hint": "Use this method to append an element to the end of a dynamic array.",
-    "explanation": "The `push` method adds an element to the end of a dynamic array."
-  },
-  {
-    "id": "al_int_2",
-    "topic": "Arrays & Loops",
-    "level": "Intermediate",
-    "question": "Get the number of elements in the `data` array.",
-    "template": "pragma solidity ^0.8.0;\ncontract Counter {\n uint[] public data;\n function count() public view returns(uint) {\n return data.______;\n }\n}",
-    "correctAnswer": "length",
-    "hint": "This property provides the size of the array.",
-    "explanation": "`.length` is used to get the number of elements in an array."
-  },
-  {
-    "id": "al_int_3",
-    "topic": "Arrays & Loops",
-    "level": "Intermediate",
-    "question": "Access the element at the current loop index.",
-    "template": "pragma solidity ^0.8.0;\ncontract Total {\n uint[] public values;\n function sum() public view returns(uint total) {\n for(uint i = 0; i < values.length; i++) {\n total += ______[i];\n }\n }\n}",
-    "correctAnswer": "values",
-    "hint": "Use the name of the array being iterated over.",
-    "explanation": "You need to access the element from the `values` array at index `i`."
-  },
-  {
-    "id": "al_int_4",
-    "topic": "Arrays & Loops",
-    "level": "Intermediate",
-    "question": "Increment the counter variable inside the loop.",
-    "template": "pragma solidity ^0.8.0;\ncontract EvenNumbers {\n uint[] public nums;\n function findEven() public view returns(uint count) {\n for(uint i = 0; i < nums.length; i++) {\n if(nums[i] % 2 == 0) {\n ______++;\n }\n }\n }\n}",
-    "correctAnswer": "count",
-    "hint": "The variable `count` is used to track the number of even numbers found.",
-    "explanation": "Incrementing `count` keeps track of how many even numbers are found in the array."
-  },
-  {
-    "id": "al_int_5",
-    "topic": "Arrays & Loops",
-    "level": "Intermediate",
-    "question": "Access the array element using the provided function parameter.",
-    "template": "pragma solidity ^0.8.0;\ncontract StorageArray {\n uint[5] public fixedArray = [1,2,3,4,5];\n function getElement(uint index) public view returns(uint) {\n return fixedArray[______];\n }\n}",
-    "correctAnswer": "index",
-    "hint": "The `index` parameter determines which element to retrieve.",
-    "explanation": "The `index` variable is used to access a specific element in `fixedArray`."
-  },
-  {
     "id": "e1",
     "topic": "Events & Modifiers",
     "level": "Easy",
@@ -361,24 +340,54 @@
     "explanation": "You must use the `emit` keyword to fire an event and log its data."
   },
   {
-    "id": "e3",
+    "id": "ee_int_1",
     "topic": "Events & Modifiers",
     "level": "Intermediate",
-    "question": "Declare a modifier named 'onlyOwner'.",
-    "template": "____ onlyOwner { require(msg.sender == owner); _; }",
-    "correctAnswer": "modifier",
-    "hint": "This keyword is used to create reusable checks for functions.",
-    "explanation": "Modifiers are reusable pieces of code that can run before and/or after a function call, commonly used for access control."
+    "question": "What value should be logged in the `DataStored` event?",
+    "template": "pragma solidity ^0.8.0;\ncontract LogEvent {\n event DataStored(address user, uint amount);\n function store(uint amount) public {\n emit DataStored(msg.sender, ____);\n }\n}",
+    "correctAnswer": "amount",
+    "hint": "The event should log the `amount` passed to the `store` function.",
+    "explanation": "The `amount` parameter is passed to the event to log the stored value."
   },
   {
-    "id": "e4",
+    "id": "ee_int_2",
     "topic": "Events & Modifiers",
     "level": "Intermediate",
-    "question": "In a modifier, where does the modified function's body get executed?",
-    "template": "modifier myModifier { // code before \n ____; \n // code after }",
-    "correctAnswer": "_",
-    "hint": "This special symbol is a placeholder for the function code.",
-    "explanation": "The single underscore `_` is a special character in a modifier that represents the body of the function being modified."
+    "question": "Use the keyword to trigger the `UserJoined` event.",
+    "template": "pragma solidity ^0.8.0;\ncontract Notify {\n event UserJoined(string name);\n function join(string memory name) public {\n ____ UserJoined(name);\n }\n}",
+    "correctAnswer": "emit",
+    "hint": "This keyword is used to fire events.",
+    "explanation": "`emit` is the keyword used to trigger an event and log its data."
+  },
+  {
+    "id": "ee_int_3",
+    "topic": "Events & Modifiers",
+    "level": "Intermediate",
+    "question": "Provide a string literal to be emitted with the `Action` event.",
+    "template": "pragma solidity ^0.8.0;\ncontract Logger {\n event Action(string action);\n function act() public {\n emit Action(\"____\");\n }\n}",
+    "correctAnswer": "Run",
+    "hint": "Any string can be used here, like \"Run\". Don't include the quotes in your answer.",
+    "explanation": "Correct! You can pass literal values like strings directly when emitting an event."
+  },
+  {
+    "id": "ee_int_4",
+    "topic": "Events & Modifiers",
+    "level": "Intermediate",
+    "question": "Pass the function's input parameter to the `Deposited` event.",
+    "template": "pragma solidity ^0.8.0;\ncontract DepositEvent {\n event Deposited(address indexed user, uint256 amount);\n function deposit(uint256 value) public {\n emit Deposited(msg.sender, ____);\n }\n}",
+    "correctAnswer": "value",
+    "hint": "The event expects the amount that was deposited.",
+    "explanation": "The `value` from the function parameter is emitted as part of the event data."
+  },
+  {
+    "id": "ee_int_5",
+    "topic": "Events & Modifiers",
+    "level": "Intermediate",
+    "question": "Complete the event emission with the recipient's address.",
+    "template": "pragma solidity ^0.8.0;\ncontract IndexedEvent {\n event Transfer(address indexed from, address indexed to, uint value);\n function send(address to, uint amount) public {\n emit Transfer(msg.sender, ____, amount);\n }\n}",
+    "correctAnswer": "to",
+    "hint": "The second parameter of the `Transfer` event is the recipient.",
+    "explanation": "The `to` address from the `send` function's parameters is used for the event."
   },
   {
     "id": "e5",
@@ -405,7 +414,7 @@
     "topic": "Modifiers & Require",
     "level": "Intermediate",
     "question": "This special character in a modifier represents the rest of the function's code.",
-    "template": "pragma solidity ^0.8.0;\ncontract AccessControl {\n address public owner;\n constructor() {\n owner = msg.sender;\n }\n modifier onlyOwner() {\n require(msg.sender == owner, \"Not authorized\");\n ______;\n }\n}",
+    "template": "pragma solidity ^0.8.0;\ncontract AccessControl {\n address public owner;\n constructor() {\n owner = msg.sender;\n }\n modifier onlyOwner() {\n require(msg.sender == owner, \"Not authorized\");\n ____;\n }\n}",
     "correctAnswer": "_",
     "hint": "It's a single underscore.",
     "explanation": "The `_` symbol is a placeholder for the function body where the modifier is applied."
@@ -415,7 +424,7 @@
     "topic": "Modifiers & Require",
     "level": "Intermediate",
     "question": "Complete the require statement to ensure the deposit amount is added to the balance.",
-    "template": "pragma solidity ^0.8.0;\ncontract Deposit {\n uint public balance;\n function deposit(uint amount) public {\n require(amount > 0, \"Invalid amount\");\n balance += ______;\n }\n}",
+    "template": "pragma solidity ^0.8.0;\ncontract Deposit {\n uint public balance;\n function deposit(uint amount) public {\n require(amount > 0, \"Invalid amount\");\n balance += ____;\n }\n}",
     "correctAnswer": "amount",
     "hint": "Use the function's input parameter.",
     "explanation": "The `amount` from the function input is added to the contract's `balance`."
@@ -425,7 +434,7 @@
     "topic": "Modifiers & Require",
     "level": "Intermediate",
     "question": "Complete the division operation.",
-    "template": "pragma solidity ^0.8.0;\ncontract Checker {\n function safeDivide(uint a, uint b) public pure returns(uint) {\n require(b != 0, \"Cannot divide by zero\");\n return a / ______;\n }\n}",
+    "template": "pragma solidity ^0.8.0;\ncontract Checker {\n function safeDivide(uint a, uint b) public pure returns(uint) {\n require(b != 0, \"Cannot divide by zero\");\n return a / ____;\n }\n}",
     "correctAnswer": "b",
     "hint": "The divisor is the second parameter.",
     "explanation": "Division by `b` is performed after ensuring `b` is not zero."
@@ -435,7 +444,7 @@
     "topic": "Modifiers & Require",
     "level": "Intermediate",
     "question": "Use the state variable to check the age.",
-    "template": "pragma solidity ^0.8.0;\ncontract AgeValidator {\n uint public minAge = 18;\n function check(uint age) public view {\n require(age >= ______, \"Too young\");\n }\n}",
+    "template": "pragma solidity ^0.8.0;\ncontract AgeValidator {\n uint public minAge = 18;\n function check(uint age) public view {\n require(age >= ____, \"Too young\");\n }\n}",
     "correctAnswer": "minAge",
     "hint": "Compare the input `age` with the contract's minimum age requirement.",
     "explanation": "The `require` statement validates the input `age` against the `minAge` state variable."
@@ -445,67 +454,17 @@
     "topic": "Modifiers & Require",
     "level": "Intermediate",
     "question": "This special character in a modifier represents the rest of the function's code.",
-    "template": "pragma solidity ^0.8.0;\ncontract Guarded {\n bool public locked;\n modifier notLocked() {\n require(!locked, \"Locked\");\n ______;\n }\n}",
+    "template": "pragma solidity ^0.8.0;\ncontract Guarded {\n bool public locked;\n modifier notLocked() {\n require(!locked, \"Locked\");\n ____;\n }\n}",
     "correctAnswer": "_",
     "hint": "It's a single underscore.",
     "explanation": "The `_` symbol is a placeholder for the function body where the `notLocked` modifier is applied."
-  },
-  {
-    "id": "ee_int_1",
-    "topic": "Events & Modifiers",
-    "level": "Intermediate",
-    "question": "What value should be logged in the `DataStored` event?",
-    "template": "pragma solidity ^0.8.0;\ncontract LogEvent {\n event DataStored(address user, uint amount);\n function store(uint amount) public {\n emit DataStored(msg.sender, ______);\n }\n}",
-    "correctAnswer": "amount",
-    "hint": "The event should log the `amount` passed to the `store` function.",
-    "explanation": "The `amount` parameter is passed to the event to log the stored value."
-  },
-  {
-    "id": "ee_int_2",
-    "topic": "Events & Modifiers",
-    "level": "Intermediate",
-    "question": "Use the keyword to trigger the `UserJoined` event.",
-    "template": "pragma solidity ^0.8.0;\ncontract Notify {\n event UserJoined(string name);\n function join(string memory name) public {\n ______ UserJoined(name);\n }\n}",
-    "correctAnswer": "emit",
-    "hint": "This keyword is used to fire events.",
-    "explanation": "`emit` is the keyword used to trigger an event and log its data."
-  },
-  {
-    "id": "ee_int_3",
-    "topic": "Events & Modifiers",
-    "level": "Intermediate",
-    "question": "Provide a string literal to be emitted with the `Action` event.",
-    "template": "pragma solidity ^0.8.0;\ncontract Logger {\n event Action(string action);\n function act() public {\n emit Action(\"______\");\n }\n}",
-    "correctAnswer": "Run",
-    "hint": "Any string can be used here, like \"Run\". Don't include the quotes in your answer.",
-    "explanation": "Correct! You can pass literal values like strings directly when emitting an event."
-  },
-  {
-    "id": "ee_int_4",
-    "topic": "Events & Modifiers",
-    "level": "Intermediate",
-    "question": "Pass the function's input parameter to the `Deposited` event.",
-    "template": "pragma solidity ^0.8.0;\ncontract DepositEvent {\n event Deposited(address indexed user, uint256 amount);\n function deposit(uint256 value) public {\n emit Deposited(msg.sender, ______);\n }\n}",
-    "correctAnswer": "value",
-    "hint": "The event expects the amount that was deposited.",
-    "explanation": "The `value` from the function parameter is emitted as part of the event data."
-  },
-  {
-    "id": "ee_int_5",
-    "topic": "Events & Modifiers",
-    "level": "Intermediate",
-    "question": "Complete the event emission with the recipient's address.",
-    "template": "pragma solidity ^0.8.0;\ncontract IndexedEvent {\n event Transfer(address indexed from, address indexed to, uint value);\n function send(address to, uint amount) public {\n emit Transfer(msg.sender, ______, amount);\n }\n}",
-    "correctAnswer": "to",
-    "hint": "The second parameter of the `Transfer` event is the recipient.",
-    "explanation": "The `to` address from the `send` function's parameters is used for the event."
   },
   {
     "id": "ci_int_1",
     "topic": "Constructor & Inheritance",
     "level": "Intermediate",
     "question": "Initialize the state variable `x` with the constructor parameter.",
-    "template": "pragma solidity ^0.8.0;\ncontract Parent {\n uint public x;\n constructor(uint _x) {\n x = ______;\n }\n}",
+    "template": "pragma solidity ^0.8.0;\ncontract Parent {\n uint public x;\n constructor(uint _x) {\n x = ____;\n }\n}",
     "correctAnswer": "_x",
     "hint": "Assign the value from the constructor's input parameter.",
     "explanation": "The state variable `x` is initialized with the value `_x` passed to the constructor."
@@ -515,7 +474,7 @@
     "topic": "Constructor & Inheritance",
     "level": "Intermediate",
     "question": "Pass the constructor argument from the child contract to the parent `Base` contract.",
-    "template": "pragma solidity ^0.8.0;\ncontract Base {\n uint public y;\n constructor(uint _y) {\n y = _y;\n }\n}\ncontract Child is Base {\n constructor(uint val) Base(______) {}\n}",
+    "template": "pragma solidity ^0.8.0;\ncontract Base {\n uint public y;\n constructor(uint _y) {\n y = _y;\n }\n}\ncontract Child is Base {\n constructor(uint val) Base(____) {}\n}",
     "correctAnswer": "val",
     "hint": "The parent constructor needs the value from the child's constructor.",
     "explanation": "When inheriting, you must pass the required arguments to the parent contract's constructor."
@@ -525,7 +484,7 @@
     "topic": "Constructor & Inheritance",
     "level": "Intermediate",
     "question": "Initialize the `name` state variable from the constructor's parameter.",
-    "template": "pragma solidity ^0.8.0;\ncontract A {\n string public name;\n constructor(string memory _name) {\n name = ______;\n }\n}",
+    "template": "pragma solidity ^0.8.0;\ncontract A {\n string public name;\n constructor(string memory _name) {\n name = ____;\n }\n}",
     "correctAnswer": "_name",
     "hint": "The `name` variable should be set to the value of the `_name` parameter.",
     "explanation": "The constructor sets the initial value of the `name` state variable."
@@ -535,7 +494,7 @@
     "topic": "Constructor & Inheritance",
     "level": "Intermediate",
     "question": "Provide a hardcoded string literal to the parent `Animal` constructor.",
-    "template": "pragma solidity ^0.8.0;\ncontract Animal {\n string public species;\n constructor(string memory _species) {\n species = _species;\n }\n}\ncontract Dog is Animal {\n constructor() Animal(\"______\") {}\n}",
+    "template": "pragma solidity ^0.8.0;\ncontract Animal {\n string public species;\n constructor(string memory _species) {\n species = _species;\n }\n}\ncontract Dog is Animal {\n constructor() Animal(\"____\") {}\n}",
     "correctAnswer": "Dog",
     "hint": "The child `Dog` contract should identify its species as \"Dog\". Don't include the quotes in your answer.",
     "explanation": "The `Dog` contract calls its parent `Animal` constructor with the string \"Dog\" to set its species."
@@ -545,9 +504,887 @@
     "topic": "Constructor & Inheritance",
     "level": "Intermediate",
     "question": "Provide a literal value to the parent `BaseContract` constructor directly in the inheritance declaration.",
-    "template": "pragma solidity ^0.8.0;\ncontract BaseContract {\n uint public data;\n constructor(uint _data) {\n data = _data;\n }\n}\ncontract Extended is BaseContract(______) {}",
+    "template": "pragma solidity ^0.8.0;\ncontract BaseContract {\n uint public data;\n constructor(uint _data) {\n data = _data;\n }\n}\ncontract Extended is BaseContract(____) {}",
     "correctAnswer": "5",
     "hint": "You can provide constructor arguments directly where you declare inheritance.",
     "explanation": "For simple cases, you can pass a constant value to a parent constructor directly in the `is` declaration."
+  },
+  {
+    "id": "iac_adv_1",
+    "topic": "Interfaces and Abstract Contracts",
+    "level": "Advanced",
+    "question": "Call the `balanceOf` function from the `IToken` interface.",
+    "template": "pragma solidity ^0.8.0;\ninterface IToken {\n function transfer(address to, uint amount) external returns (bool);\n function balanceOf(address account) external view returns (uint);\n}\ncontract TokenUser {\n IToken public token = IToken(0x0);\n function useToken() public {\n uint bal = token.____(msg.sender);\n }\n}",
+    "correctAnswer": "balanceOf",
+    "hint": "You need to call a function on the token interface to check the balance.",
+    "explanation": "Calling `token.balanceOf(msg.sender)` invokes the `balanceOf` function on the contract at the `token` address."
+  },
+  {
+    "id": "iac_adv_2",
+    "topic": "Interfaces and Abstract Contracts",
+    "level": "Advanced",
+    "question": "Call the overridden `doWork` function from within the `Worker` contract.",
+    "template": "pragma solidity ^0.8.0;\nabstract contract Base {\n function doWork() public virtual returns (uint);\n}\ncontract Worker is Base {\n function doWork() public override returns (uint) {\n return 1;\n }\n function callBase() public {\n uint x = ____();\n }\n}",
+    "correctAnswer": "doWork",
+    "hint": "You can call the function directly as it's part of the same contract.",
+    "explanation": "The `doWork` function is part of the `Worker` contract's public interface, so it can be called directly."
+  },
+  {
+    "id": "iac_adv_3",
+    "topic": "Interfaces and Abstract Contracts",
+    "level": "Advanced",
+    "question": "Use the `IRegistry` interface to call the `register` function.",
+    "template": "pragma solidity ^0.8.0;\ninterface IRegistry {\n function register(address a) external;\n}\ncontract RegUser {\n IRegistry public reg;\n constructor(address _r) { reg = IRegistry(_r); }\n function signUp() public {\n reg.____(msg.sender);\n }\n}",
+    "correctAnswer": "register",
+    "hint": "The function to be called is defined in the `IRegistry` interface.",
+    "explanation": "You can call functions on an interface variable, which will execute the corresponding function on the contract at that address."
+  },
+  {
+    "id": "iac_adv_4",
+    "topic": "Interfaces and Abstract Contracts",
+    "level": "Advanced",
+    "question": "Call the `area` function that is implemented in the `Square` contract.",
+    "template": "pragma solidity ^0.8.0;\nabstract contract Shape {\n function area() public view virtual returns (uint);\n}\ncontract Square is Shape {\n uint side;\n constructor(uint s) { side = s; }\n function area() public view override returns (uint) {\n return side * side;\n }\n function getArea() public view returns (uint) {\n return ____();\n }\n}",
+    "correctAnswer": "area",
+    "hint": "Call the function that calculates the area.",
+    "explanation": "Since `Square` implements the `area` function, you can call it directly from other functions in the same contract."
+  },
+  {
+    "id": "iac_adv_5",
+    "topic": "Interfaces and Abstract Contracts",
+    "level": "Advanced",
+    "question": "Call the `add` function on the `ICalc` interface.",
+    "template": "pragma solidity ^0.8.0;\ninterface ICalc {\n function add(uint a, uint b) external pure returns (uint);\n}\ncontract CalcUser {\n ICalc calc;\n constructor(address _c) { calc = ICalc(_c); }\n function sum(uint a, uint b) public view returns (uint) {\n return calc.____(a, b);\n }\n}",
+    "correctAnswer": "add",
+    "hint": "The interface defines the function you need to call.",
+    "explanation": "By calling `calc.add(a, b)`, you are executing the `add` function on the external contract represented by the `calc` interface."
+  },
+  {
+    "id": "iac_adv_6",
+    "topic": "Interfaces and Abstract Contracts",
+    "level": "Advanced",
+    "question": "Call the implemented `log` function with a string literal.",
+    "template": "pragma solidity ^0.8.0;\ninterface ILogger {\n function log(string calldata s) external;\n}\nabstract contract ALogger {\n function log(string calldata s) public virtual;\n}\ncontract MyLogger is ALogger, ILogger {\n function log(string calldata s) public override {}\n function test() public {\n log(\"____\");\n }\n}",
+    "correctAnswer": "hello",
+    "hint": "You need to pass a string value to the log function. Don't include quotes in your answer.",
+    "explanation": "You can call the `log` function with a string literal like \"hello\"."
+  },
+  {
+    "id": "iac_adv_7",
+    "topic": "Interfaces and Abstract Contracts",
+    "level": "Advanced",
+    "question": "Call the `execute` function on the `IExample` interface.",
+    "template": "pragma solidity ^0.8.0;\ninterface IExample {\n function execute() external;\n}\ncontract Caller {\n IExample public ex;\n function set(address _e) public { ex = IExample(_e); }\n function run() public {\n ex.____();\n }\n}",
+    "correctAnswer": "execute",
+    "hint": "The function to call is named `execute`.",
+    "explanation": "Calling `ex.execute()` will trigger the `execute` function on the contract at the `ex` address."
+  },
+  {
+    "id": "iac_adv_8",
+    "topic": "Interfaces and Abstract Contracts",
+    "level": "Advanced",
+    "question": "Call the overridden `isAuthorized` function.",
+    "template": "pragma solidity ^0.8.0;\nabstract contract Auth {\n function isAuthorized(address user) public view virtual returns (bool);\n}\ncontract Service is Auth {\n function isAuthorized(address user) public view override returns (bool) {\n return user == msg.sender;\n }\n function check() public view returns (bool) {\n return ____(tx.origin);\n }\n}",
+    "correctAnswer": "isAuthorized",
+    "hint": "The function `isAuthorized` is available to be called within the contract.",
+    "explanation": "`isAuthorized` is an implemented function within the `Service` contract and can be called directly."
+  },
+  {
+    "id": "iac_adv_9",
+    "topic": "Interfaces and Abstract Contracts",
+    "level": "Advanced",
+    "question": "Call the `increment` function on the `ICounter` interface.",
+    "template": "pragma solidity ^0.8.0;\ninterface ICounter {\n function increment() external;\n function get() external view returns (uint);\n}\ncontract Caller {\n ICounter counter;\n function doIt() public {\n counter.____();\n }\n}",
+    "correctAnswer": "increment",
+    "hint": "The goal is to increment the counter.",
+    "explanation": "Calling `counter.increment()` executes the `increment` function on the external counter contract."
+  },
+  {
+    "id": "iac_adv_10",
+    "topic": "Interfaces and Abstract Contracts",
+    "level": "Advanced",
+    "question": "Call the `store` function with a literal value.",
+    "template": "pragma solidity ^0.8.0;\nabstract contract AbstractStore {\n function store(uint x) public virtual;\n}\ncontract Store is AbstractStore {\n uint public v;\n function store(uint x) public override { v = x; }\n function save() public {\n store(____);\n }\n}",
+    "correctAnswer": "10",
+    "hint": "You can pass any `uint` value to the store function.",
+    "explanation": "The `store` function is called with the value `10` to update the state variable `v`."
+  },
+  {
+    "id": "iac_adv_11",
+    "topic": "Interfaces and Abstract Contracts",
+    "level": "Advanced",
+    "question": "Pass the `id` to the `buy` function on the `IMarket` interface.",
+    "template": "pragma solidity ^0.8.0;\ninterface IMarket {\n function buy(uint id) external payable;\n}\ncontract Buyer {\n IMarket market;\n function purchase(uint id) public payable {\n market.buy{value: msg.value}(____);\n }\n}",
+    "correctAnswer": "id",
+    "hint": "The `buy` function expects the `id` of the item to purchase.",
+    "explanation": "You must forward the `id` from the `purchase` function to the `market.buy` function call."
+  },
+  {
+    "id": "iac_adv_12",
+    "topic": "Interfaces and Abstract Contracts",
+    "level": "Advanced",
+    "question": "Call both `a` and `b` functions to combine their results.",
+    "template": "pragma solidity ^0.8.0;\nabstract contract BaseA {\n function a() public virtual returns (string memory);\n}\nabstract contract BaseB {\n function b() public virtual returns (string memory);\n}\ncontract AB is BaseA, BaseB {\n function a() public override returns (string memory) { return \"A\"; }\n function b() public override returns (string memory) { return \"B\"; }\n function both() public returns (string memory) {\n return string(abi.encodePacked(____(), ____())); \n }\n}",
+    "correctAnswer": "a,b",
+    "hint": "You need to call two functions, separated by a comma.",
+    "explanation": "Calling `a()` and `b()` executes the implemented functions and their return values are packed together."
+  },
+  {
+    "id": "iac_adv_13",
+    "topic": "Interfaces and Abstract Contracts",
+    "level": "Advanced",
+    "question": "Call the `withdraw` function on the `IWallet` interface.",
+    "template": "pragma solidity ^0.8.0;\ninterface IWallet {\n function withdraw(uint) external;\n}\ncontract User {\n IWallet wallet;\n function take(uint amount) public {\n wallet.____(amount);\n }\n}",
+    "correctAnswer": "withdraw",
+    "hint": "The interface specifies a `withdraw` function.",
+    "explanation": "Calling `wallet.withdraw(amount)` triggers the `withdraw` function on the external wallet contract."
+  },
+  {
+    "id": "iac_adv_14",
+    "topic": "Interfaces and Abstract Contracts",
+    "level": "Advanced",
+    "question": "Call the contract's own `greet` function.",
+    "template": "pragma solidity ^0.8.0;\nabstract contract BaseX {\n function greet() public view virtual returns (string memory);\n}\ncontract Hello is BaseX {\n function greet() public view override returns (string memory) { return \"hi\"; }\n function say() public view returns (string memory) {\n return ____();\n }\n}",
+    "correctAnswer": "greet",
+    "hint": "The `greet` function is implemented in the `Hello` contract.",
+    "explanation": "You can call the `greet` function directly as it's part of the `Hello` contract."
+  },
+  {
+    "id": "iac_adv_15",
+    "topic": "Interfaces and Abstract Contracts",
+    "level": "Advanced",
+    "question": "Call the `mul` function through the `ICalc2` interface.",
+    "template": "pragma solidity ^0.8.0;\ninterface ICalc2 {\n function mul(uint a, uint b) external pure returns(uint);\n}\ncontract UseCalc {\n ICalc2 calc;\n constructor(address c) { calc = ICalc2(c); }\n function product(uint a, uint b) public view returns (uint) {\n return calc.____(a, b);\n }\n}",
+    "correctAnswer": "mul",
+    "hint": "The function for multiplication is `mul`.",
+    "explanation": "`calc.mul(a, b)` executes the `mul` function on the external calculator contract."
+  },
+  {
+    "id": "iac_adv_16",
+    "topic": "Interfaces and Abstract Contracts",
+    "level": "Advanced",
+    "question": "Call the `foo` function from `callFoo`.",
+    "template": "pragma solidity ^0.8.0;\nabstract contract ParentC {\n function foo() public virtual returns(uint);\n}\ncontract ChildC is ParentC {\n function foo() public override returns(uint) { return 7; }\n function callFoo() public returns(uint) {\n return ____();\n }\n}",
+    "correctAnswer": "foo",
+    "hint": "The function `foo` is implemented in the `ChildC` contract.",
+    "explanation": "`foo()` can be called directly because it is part of the `ChildC` contract."
+  },
+  {
+    "id": "iac_adv_17",
+    "topic": "Interfaces and Abstract Contracts",
+    "level": "Advanced",
+    "question": "Call the `ping` function on the `IService` interface.",
+    "template": "pragma solidity ^0.8.0;\ninterface IService { function ping() external view returns (bool); }\ncontract Pinger {\n IService service;\n function up(address s) public { service = IService(s); }\n function pingService() public view returns (bool) {\n return service.____();\n }\n}",
+    "correctAnswer": "ping",
+    "hint": "The interface defines a function called `ping`.",
+    "explanation": "Calling `service.ping()` executes the `ping` function on the external service contract."
+  },
+  {
+    "id": "iac_adv_18",
+    "topic": "Interfaces and Abstract Contracts",
+    "level": "Advanced",
+    "question": "Call the `version` function.",
+    "template": "pragma solidity ^0.8.0;\nabstract contract BaseY { function version() public pure virtual returns(string memory); }\ncontract Impl is BaseY {\n function version() public pure override returns(string memory) { return \"1.0\"; }\n function getVersion() public pure returns (string memory) {\n return ____();\n }\n}",
+    "correctAnswer": "version",
+    "hint": "The `version` function is available within the `Impl` contract.",
+    "explanation": "The implemented `version` function can be called directly from other functions in the contract."
+  },
+  {
+    "id": "iac_adv_19",
+    "topic": "Interfaces and Abstract Contracts",
+    "level": "Advanced",
+    "question": "Call the `symbol` function on the `ITokenSimple` interface.",
+    "template": "pragma solidity ^0.8.0;\ninterface ITokenSimple { function symbol() external view returns (string memory); }\ncontract TokenReader {\n ITokenSimple t;\n function name() public view returns (string memory) {\n return t.____( );\n }\n}",
+    "correctAnswer": "symbol",
+    "hint": "The interface function to get the token symbol is `symbol`.",
+    "explanation": "Calling `t.symbol()` retrieves the symbol from the token contract represented by the `t` interface."
+  },
+  {
+    "id": "luf_adv_1",
+    "topic": "Libraries and Using For",
+    "level": "Advanced",
+    "question": "Call the `add` function from the `MathLib` library.",
+    "template": "pragma solidity ^0.8.0;\nlibrary MathLib {\n function add(uint a, uint b) internal pure returns (uint) { return a + b; }\n}\ncontract UsesMath {\n function sum(uint a, uint b) public pure returns (uint) {\n return MathLib.____(a, b);\n }\n}",
+    "correctAnswer": "add",
+    "hint": "Library functions are called using `LibraryName.functionName()`.",
+    "explanation": "Functions from a library are called directly on the library itself, like `MathLib.add()`."
+  },
+  {
+    "id": "luf_adv_2",
+    "topic": "Libraries and Using For",
+    "level": "Advanced",
+    "question": "Call the `len` function on a string variable using the `using for` syntax.",
+    "template": "pragma solidity ^0.8.0;\nlibrary Str {\n function len(string memory s) internal pure returns (uint) { return bytes(s).length; }\n}\ncontract Test {\n using Str for string;\n function length(string memory s) public pure returns (uint) {\n return s.____();\n }\n}",
+    "correctAnswer": "len",
+    "hint": "With `using Str for string`, you can call `len` as if it were a member function of the string.",
+    "explanation": "The `using Str for string` directive allows you to call functions from the `Str` library on string variables, e.g., `s.len()`."
+  },
+  {
+    "id": "luf_adv_3",
+    "topic": "Libraries and Using For",
+    "level": "Advanced",
+    "question": "Use the attached library function to get the first element of the array.",
+    "template": "pragma solidity ^0.8.0;\nlibrary LibArr {\n function first(uint[] storage a) internal view returns (uint) { return a[0]; }\n}\ncontract C {\n using LibArr for uint[];\n uint[] data;\n function getFirst() public view returns (uint) {\n return data.____();\n }\n}",
+    "correctAnswer": "first",
+    "hint": "The library `LibArr` is attached to `uint[]`, so you can call its functions on `data`.",
+    "explanation": "With `using LibArr for uint[]`, the `first` function can be called on the `data` array as `data.first()`."
+  },
+  {
+    "id": "luf_adv_4",
+    "topic": "Libraries and Using For",
+    "level": "Advanced",
+    "question": "Use the `mul` function from `SafeMath` on a `uint` variable.",
+    "template": "pragma solidity ^0.8.0;\nlibrary SafeMath {\n function mul(uint a, uint b) internal pure returns (uint) { return a * b; }\n}\ncontract Calc {\n using SafeMath for uint;\n function times(uint a, uint b) public pure returns (uint) {\n return a.____(b);\n }\n}",
+    "correctAnswer": "mul",
+    "hint": "The library function can be called as a method on the `uint` variable `a`.",
+    "explanation": "The `using SafeMath for uint` declaration attaches the `mul` function to the `uint` type, allowing `a.mul(b)`."
+  },
+  {
+    "id": "luf_adv_5",
+    "topic": "Libraries and Using For",
+    "level": "Advanced",
+    "question": "Call the `isZero` utility function on the `uint` variable `x`.",
+    "template": "pragma solidity ^0.8.0;\nlibrary Utils {\n function isZero(uint x) internal pure returns(bool) { return x == 0; }\n}\ncontract Check {\n using Utils for uint;\n function checkZero(uint x) public pure returns(bool) {\n return x.____();\n }\n}",
+    "correctAnswer": "isZero",
+    "hint": "`using Utils for uint` lets you call `isZero` on `x`.",
+    "explanation": "The `isZero` function from the `Utils` library can be called as a method: `x.isZero()`."
+  },
+  {
+    "id": "luf_adv_6",
+    "topic": "Libraries and Using For",
+    "level": "Advanced",
+    "question": "Call the library function `f` on the `uint` variable `a`.",
+    "template": "pragma solidity ^0.8.0;\nlibrary L {\n function f(uint a) internal pure returns (uint) { return a + 1; }\n}\ncontract UseL {\n using L for uint;\n function inc(uint a) public pure returns(uint) {\n return a.____();\n }\n}",
+    "correctAnswer": "f",
+    "hint": "The `using for` statement attaches the library's functions to the type.",
+    "explanation": "Because of `using L for uint`, the `f` function can be called like a method: `a.f()`."
+  },
+  {
+    "id": "luf_adv_7",
+    "topic": "Libraries and Using For",
+    "level": "Advanced",
+    "question": "Use the attached library function to push a value to the array.",
+    "template": "pragma solidity ^0.8.0;\nlibrary ListLib {\n function push(uint[] storage arr, uint v) internal { arr.push(v); }\n}\ncontract LL {\n using ListLib for uint[];\n uint[] items;\n function add(uint v) public { items.____(v); }\n}",
+    "correctAnswer": "push",
+    "hint": "The `ListLib` library provides a `push` function.",
+    "explanation": "The library function `push` is called on the `items` array as `items.push(v)`."
+  },
+  {
+    "id": "luf_adv_8",
+    "topic": "Libraries and Using For",
+    "level": "Advanced",
+    "question": "Call the `toUint` function on the `bytes` variable `b`.",
+    "template": "pragma solidity ^0.8.0;\nlibrary BytesUtil {\n function toUint(bytes memory b) internal pure returns(uint) { return uint(bytes32(b)); }\n}\ncontract BU {\n using BytesUtil for bytes;\n function conv(bytes memory b) public pure returns(uint) {\n return b.____();\n }\n}",
+    "correctAnswer": "toUint",
+    "hint": "The library `BytesUtil` is attached to the `bytes` type.",
+    "explanation": "Thanks to `using BytesUtil for bytes`, you can call `b.toUint()`."
+  },
+  {
+    "id": "luf_adv_9",
+    "topic": "Libraries and Using For",
+    "level": "Advanced",
+    "question": "Use the attached library to get the square of `x`.",
+    "template": "pragma solidity ^0.8.0;\nlibrary MathExt {\n function square(uint a) internal pure returns(uint) { return a * a; }\n}\ncontract ME {\n using MathExt for uint;\n function sq(uint x) public pure returns(uint) {\n return x.____();\n }\n}",
+    "correctAnswer": "square",
+    "hint": "The `MathExt` library provides a `square` function.",
+    "explanation": "The `square` function is called on `x` as `x.square()`."
+  },
+  {
+    "id": "luf_adv_10",
+    "topic": "Libraries and Using For",
+    "level": "Advanced",
+    "question": "Call the `startsWith` function on string `s`.",
+    "template": "pragma solidity ^0.8.0;\nlibrary LString {\n function startsWith(string memory s, string memory prefix) internal pure returns(bool) { return bytes(s).length >= bytes(prefix).length; }\n}\ncontract Checker2 {\n using LString for string;\n function begins(string memory s, string memory p) public pure returns(bool) {\n return s.____(p);\n }\n}",
+    "correctAnswer": "startsWith",
+    "hint": "`using LString for string` attaches the `startsWith` function.",
+    "explanation": "The library function is called as a method on the string: `s.startsWith(p)`."
+  },
+  {
+    "id": "luf_adv_11",
+    "topic": "Libraries and Using For",
+    "level": "Advanced",
+    "question": "Call the `mul` function on `a` using the attached library.",
+    "template": "pragma solidity ^0.8.0;\nlibrary LibMul { function mul(uint a, uint b) internal pure returns(uint) { return a*b; } }\ncontract UseMul {\n using LibMul for uint;\n function callMul(uint a, uint b) public pure returns(uint) {\n return a.____(b);\n }\n}",
+    "correctAnswer": "mul",
+    "hint": "The `LibMul` library's `mul` function is attached to `uint`.",
+    "explanation": "Correct. `a.mul(b)` is the syntax for calling the attached library function."
+  },
+  {
+    "id": "luf_adv_12",
+    "topic": "Libraries and Using For",
+    "level": "Advanced",
+    "question": "Use the library function to check if address `a` is zero.",
+    "template": "pragma solidity ^0.8.0;\nlibrary AddrLib {\n function isZero(address a) internal pure returns(bool) { return a == address(0); }\n}\ncontract AddrCheck {\n using AddrLib for address;\n function check(address a) public pure returns(bool) {\n return a.____();\n }\n}",
+    "correctAnswer": "isZero",
+    "hint": "`using AddrLib for address` attaches `isZero` to the `address` type.",
+    "explanation": "The function is called as `a.isZero()`."
+  },
+  {
+    "id": "luf_adv_13",
+    "topic": "Libraries and Using For",
+    "level": "Advanced",
+qos": "pragma solidity ^0.8.0;\nlibrary ArrOps {\n function last(uint[] storage a) internal view returns(uint) { return a[a.length - 1]; }\n}\ncontract LastItem {\n using ArrOps for uint[];\n uint[] arr;\n function getLast() public view returns(uint) {\n return arr.____();\n }\n}",
+    "correctAnswer": "last",
+    "hint": "The `ArrOps` library provides the `last` function.",
+    "explanation": "The function `last` is called on the `arr` array as `arr.last()`."
+  },
+  {
+    "id": "luf_adv_14",
+    "topic": "Libraries and Using For",
+    "level": "Advanced",
+    "question": "Call the `inc` function on `x`.",
+    "template": "pragma solidity ^0.8.0;\nlibrary LCalc { function inc(uint x) internal pure returns(uint) { return x+1; } }\ncontract Inc {\n using LCalc for uint;\n function up(uint x) public pure returns(uint) { return x.____(); }\n}",
+    "correctAnswer": "inc",
+    "hint": "The library `LCalc` is attached to `uint`.",
+    "explanation": "`x.inc()` is the correct way to call the attached library function."
+  },
+  {
+    "id": "luf_adv_15",
+    "topic": "Libraries and Using For",
+    "level": "Advanced",
+    "question": "Use the `norm` function on `x`.",
+    "template": "pragma solidity ^0.8.0;\nlibrary Normalize { function norm(uint x) internal pure returns(uint) { return x / 1; } }\ncontract N {\n using Normalize for uint;\n function normVal(uint x) public pure returns(uint) { return x.____(); }\n}",
+    "correctAnswer": "norm",
+    "hint": "The `Normalize` library has a `norm` function.",
+    "explanation": "The function is called as `x.norm()`."
+  },
+  {
+    "id": "luf_adv_16",
+    "topic": "Libraries and Using For",
+    "level": "Advanced",
+    "question": "Join two strings using the `Concat` library.",
+    "template": "pragma solidity ^0.8.0;\nlibrary Concat { function join(string memory a, string memory b) internal pure returns(string memory) { return string(abi.encodePacked(a,b)); } }\ncontract J {\n using Concat for string;\n function combine(string memory a, string memory b) public pure returns(string memory) { return a.____(b); }\n}",
+    "correctAnswer": "join",
+    "hint": "`using Concat for string` attaches the `join` function.",
+    "explanation": "`a.join(b)` calls the library function on the first string argument."
+  },
+  {
+    "id": "luf_adv_17",
+    "topic": "Libraries and Using For",
+    "level": "Advanced",
+    "question": "Get the count of items in array `a`.",
+    "template": "pragma solidity ^0.8.0;\nlibrary Count { function cnt(uint[] memory a) internal pure returns(uint) { return a.length; } }\ncontract Cnt {\n using Count for uint[];\n function howMany(uint[] memory a) public pure returns(uint) { return a.____( ); }\n}",
+    "correctAnswer": "cnt",
+    "hint": "The `Count` library has a `cnt` function.",
+    "explanation": "The library function is called as `a.cnt()`."
+  },
+  {
+    "id": "ehe_adv_1",
+    "topic": "Error Handling and Custom Errors",
+    "level": "Advanced",
+    "question": "Complete the division, which is protected by a `require` statement.",
+    "template": "pragma solidity ^0.8.0;\ncontract Errors {\n function divide(uint a, uint b) public pure returns(uint) {\n require(b != 0, \"div by zero\");\n return a / ____;\n }\n}",
+    "correctAnswer": "b",
+    "hint": "The divisor is `b`.",
+    "explanation": "The code divides `a` by `b` after checking that `b` is not zero."
+  },
+  {
+    "id": "ehe_adv_2",
+    "topic": "Error Handling and Custom Errors",
+    "level": "Advanced",
+    "question": "Pass the required amount to the `Insufficient` custom error.",
+    "template": "pragma solidity ^0.8.0;\nerror Insufficient(uint available, uint required);\ncontract Custom {\n function withdraw(uint amount) public view {\n uint bal = 0;\n if (bal < amount) revert Insufficient(bal, ____);\n }\n}",
+    "correctAnswer": "amount",
+    "hint": "The error needs to know how much was requested.",
+    "explanation": "`revert Insufficient(bal, amount)` is triggered with the available balance and the requested amount."
+  },
+  {
+    "id": "ehe_adv_3",
+    "topic": "Error Handling and Custom Errors",
+    "level": "Advanced",
+    "question": "Complete the `assert` statement.",
+    "template": "pragma solidity ^0.8.0;\ncontract UseAssert {\n function test(uint a) public pure returns(uint) {\n assert(____ < 2**128);\n return a;\n }\n}",
+    "correctAnswer": "a",
+    "hint": "The `assert` is checking the value of the input `a`.",
+    "explanation": "`assert(a < 2**128)` checks for an internal error or invariant violation."
+  },
+  {
+    "id": "ehe_adv_4",
+    "topic": "Error Handling and Custom Errors",
+    "level": "Advanced",
+    "question": "Pass a value to `check` that will not cause a revert.",
+    "template": "pragma solidity ^0.8.0;\ncontract RevertMsg {\n function check(bool ok) public pure {\n if (!ok) revert(\"Not ok\");\n }\n function run() public pure {\n check(____);\n }\n}",
+    "correctAnswer": "true",
+    "hint": "`check` reverts if the argument is `false`.",
+    "explanation": "Passing `true` to `check` satisfies the condition, and the function proceeds without reverting."
+  },
+  {
+    "id": "ehe_adv_5",
+    "topic": "Error Handling and Custom Errors",
+    "level": "Advanced",
+    "question": "This function uses a custom error for access control. Fill in the blank to complete the function call.",
+    "template": "pragma solidity ^0.8.0;\nerror OnlyOwner();\ncontract Owner {\n address owner;\n constructor() { owner = msg.sender; }\n modifier onlyOwner() { if (msg.sender != owner) revert OnlyOwner(); _; }\n function restricted() public view onlyOwner { ____ }\n}",
+    "correctAnswer": "",
+    "hint": "This question demonstrates a complete pattern. There is no code to add inside the function body.",
+    "explanation": "This is a complete example. The `onlyOwner` modifier handles the access control check, and the function body can be empty."
+  },
+  {
+    "id": "ehe_adv_6",
+    "topic": "Error Handling and Custom Errors",
+    "level": "Advanced",
+    "question": "Pass the out-of-range index to the custom error.",
+    "template": "pragma solidity ^0.8.0;\nerror OutOfRange(uint index);\ncontract Range {\n uint[] arr;\n function get(uint i) public view returns(uint) {\n if (i >= arr.length) revert OutOfRange(____);\n return arr[i];\n }\n}",
+    "correctAnswer": "i",
+    "hint": "The error should report the index `i` that was invalid.",
+    "explanation": "`revert OutOfRange(i)` is triggered with the index that caused the error."
+  },
+  {
+    "id": "ehe_adv_7",
+    "topic": "Error Handling and Custom Errors",
+    "level": "Advanced",
+    "question": "Call `doIt` with a value that will pass the `require` check.",
+    "template": "pragma solidity ^0.8.0;\ncontract RevertExample {\n function doIt(bool ok) public pure {\n require(ok, \"failed\");\n }\n function callIt() public pure {\n doIt(____);\n }\n}",
+    "correctAnswer": "true",
+    "hint": "The `require` statement needs its condition to be `true`.",
+    "explanation": "Calling `doIt(true)` ensures the `require` condition is met."
+  },
+  {
+    "id": "ehe_adv_8",
+    "topic": "Error Handling and Custom Errors",
+    "level": "Advanced",
+    "question": "Pass the bad value to the `BadValue` custom error.",
+    "template": "pragma solidity ^0.8.0;\nerror BadValue(uint v);\ncontract TestErr {\n function check(uint v) public pure {\n if (v == 0) revert BadValue(____);\n }\n}",
+    "correctAnswer": "v",
+    "hint": "The error should include the value `v` that caused the revert.",
+    "explanation": "`revert BadValue(v)` provides context about which value was invalid."
+  },
+  {
+    "id": "ehe_adv_9",
+    "topic": "Error Handling and Custom Errors",
+    "level": "Advanced",
+    "question": "Complete the `assert` call.",
+    "template": "pragma solidity ^0.8.0;\ncontract AssertFail {\n function f(uint x) public pure returns(uint) {\n assert(____ != 0);\n return x;\n }\n}",
+    "correctAnswer": "x",
+    "hint": "The `assert` is checking the function's input parameter `x`.",
+    "explanation": "`assert(x != 0)` checks for an invalid state, which should ideally never happen in production code."
+  },
+  {
+    "id": "ehe_adv_10",
+    "topic": "Error Handling and Custom Errors",
+    "level": "Advanced",
+    "question": "Provide the address of the unauthorized caller to the `NotAllowed` error.",
+    "template": "pragma solidity ^0.8.0;\nerror NotAllowed(address caller);\ncontract Gate {\n address owner;\n constructor() { owner = msg.sender; }\n function open() public view {\n if (msg.sender != owner) revert NotAllowed(____);\n }\n}",
+    "correctAnswer": "msg.sender",
+    "hint": "`msg.sender` holds the address of the current caller.",
+    "explanation": "`revert NotAllowed(msg.sender)` logs which address attempted the unauthorized call."
+  },
+  {
+    "id": "ehe_adv_11",
+    "topic": "Error Handling and Custom Errors",
+    "level": "Advanced",
+    "question": "Call `accept` with a value that passes the check.",
+    "template": "pragma solidity ^0.8.0;\ncontract CheckRequire {\n function accept(uint x) public pure {\n require(x > 10, \"too small\");\n }\n function run() public pure {\n accept(____);\n }\n}",
+    "correctAnswer": "11",
+    "hint": "The value must be greater than 10.",
+    "explanation": "Calling `accept(11)` passes the `require(x > 10)` check."
+  },
+  {
+    "id": "ehe_adv_12",
+    "topic": "Error Handling and Custom Errors",
+    "level": "Advanced",
+    "question": "Call `set` with a non-negative number.",
+    "template": "pragma solidity ^0.8.0;\nerror Negative();\ncontract NoNeg {\n function set(int x) public pure {\n if (x < 0) revert Negative();\n }\n function test() public pure { set(____); }\n}",
+    "correctAnswer": "1",
+    "hint": "Any integer >= 0 will work.",
+    "explanation": "Calling `set(1)` satisfies the condition `x < 0` is false, so the function does not revert."
+  },
+  {
+    "id": "ehe_adv_13",
+    "topic": "Error Handling and Custom Errors",
+    "level": "Advanced",
+    "question": "Provide a denominator that won't cause a division by zero error.",
+    "template": "pragma solidity ^0.8.0;\ncontract Combine {\n function safeDiv(uint a, uint b) public pure returns (uint) {\n require(b != 0, \"zero\");\n return a / b;\n }\n function use() public pure returns (uint) {\n return safeDiv(10, ____);\n }\n}",
+    "correctAnswer": "2",
+    "hint": "Any non-zero number will work.",
+    "explanation": "Calling `safeDiv(10, 2)` avoids the `require(b != 0)` failure."
+  },
+  {
+    "id": "ehe_adv_14",
+    "topic": "Error Handling and Custom Errors",
+    "level": "Advanced",
+    "question": "This example shows a custom error for authorization. What should go in the blank to make the call succeed?",
+    "template": "pragma solidity ^0.8.0;\nerror Unauthorized();\ncontract Auth {\n address admin;\n constructor() { admin = msg.sender; }\n function onlyAdmin() public view {\n if (msg.sender != admin) revert Unauthorized();\n }\n function callIt() public view { ____ onlyAdmin(); }\n}",
+    "correctAnswer": "",
+    "hint": "This is a complete code example. No extra code is needed.",
+    "explanation": "The function `callIt` correctly calls `onlyAdmin()`. If `callIt` is called by the admin, it succeeds. If called by anyone else, `onlyAdmin` will revert."
+  },
+  {
+    "id": "ehe_adv_15",
+    "topic": "Error Handling and Custom Errors",
+    "level": "Advanced",
+    "question": "Call `check` with a value that avoids the `revert`.",
+    "template": "pragma solidity ^0.8.0;\ncontract WithRevert {\n function check(bool ok) public pure {\n if (!ok) revert(\"bad\");\n }\n function test() public pure { check(____); }\n}",
+    "correctAnswer": "true",
+    "hint": "The function reverts if `ok` is `false`.",
+    "explanation": "Passing `true` to `check` prevents the `revert` from being triggered."
+  },
+  {
+    "id": "ehe_adv_16",
+    "topic": "Error Handling and Custom Errors",
+    "level": "Advanced",
+    "question": "Call `buy` with a quantity that is within the limit.",
+    "template": "pragma solidity ^0.8.0;\nerror TooMuch(uint want, uint have);\ncontract Limit {\n uint cap = 5;\n function buy(uint q) public view {\n if (q > cap) revert TooMuch(q, cap);\n }\n function order() public view { buy(____); }\n}",
+    "correctAnswer": "3",
+    "hint": "Any quantity less than or equal to 5 will work.",
+    "explanation": "Calling `buy(3)` satisfies the condition `q > cap` (3 > 5) is false, so the function does not revert."
+  },
+  {
+    "id": "ehe_adv_17",
+    "topic": "Error Handling and Custom Errors",
+    "level": "Advanced",
+    "question": "Call `ok` with a value that meets the requirement.",
+    "template": "pragma solidity ^0.8.0;\ncontract Safe {\n function ok(uint x) public pure {\n require(x < 100, \"x big\");\n }\n function callOk() public pure { ok(____); }\n}",
+    "correctAnswer": "10",
+    "hint": "Any `uint` less than 100 is valid.",
+    "explanation": "Calling `ok(10)` passes the `require(x < 100)` check."
+  },
+  {
+    "id": "ehe_adv_18",
+    "topic": "Error Handling and Custom Errors",
+    "level": "Advanced",
+    "question": "This contract reverts with a custom error. What keyword is missing?",
+    "template": "pragma solidity ^0.8.0;\nerror CustomErr(string);\ncontract CE {\n function run() public pure {\n if (true) ____ CustomErr(\"err\"); \n }\n}",
+    "correctAnswer": "revert",
+    "hint": "Use this keyword to trigger an error and refund remaining gas.",
+    "explanation": "The `revert` keyword is used to trigger custom errors, like `revert CustomErr(\"err\")`."
+  },
+  {
+    "id": "goe_adv_1",
+    "topic": "Gas Optimization and Efficiency",
+    "level": "Advanced",
+    "question": "Complete the `sum` function by accessing the state variable.",
+    "template": "pragma solidity ^0.8.0;\ncontract GasTips {\n uint256 public a;\n uint256 public b;\n function set(uint256 _a, uint256 _b) public {\n a = _a;\n b = _b;\n }\n function sum() public view returns(uint256) {\n return a + ____;\n }\n}",
+    "correctAnswer": "b",
+    "hint": "Add the two state variables together.",
+    "explanation": "Accessing state variables `a` and `b` to perform the sum. Reading state costs gas."
+  },
+  {
+    "id": "goe_adv_2",
+    "topic": "Gas Optimization and Efficiency",
+    "level": "Advanced",
+    "question": "Complete the expression. Using `calldata` for external function parameters saves gas.",
+    "template": "pragma solidity ^0.8.0;\ncontract UseCalldata {\n function concat(string calldata a, string calldata b) external pure returns (uint) {\n return bytes(a).length + bytes(b).length + ____;\n }\n}",
+    "correctAnswer": "0",
+    "hint": "This is a placeholder to complete a valid expression. Adding 0 doesn't change the result.",
+    "explanation": "Using `calldata` instead of `memory` for external function parameters is cheaper because it avoids copying data from call data to memory."
+  },
+  {
+    "id": "goe_adv_3",
+    "topic": "Gas Optimization and Efficiency",
+    "level": "Advanced",
+    "question": "Complete the expression. Packing variables into a single storage slot saves gas.",
+    "template": "pragma solidity ^0.8.0;\ncontract Pack {\n uint128 a;\n uint128 b;\n function set(uint128 x, uint128 y) public { a = x; b = y; }\n function both() public view returns (uint256) { return uint256(a) + uint256(____); }\n}",
+    "correctAnswer": "b",
+    "hint": "Add the other packed variable `b`.",
+    "explanation": "By using `uint128` for `a` and `b`, they can be packed into a single 256-bit storage slot, which is more gas-efficient than using two `uint256` variables."
+  },
+  {
+    "id": "goe_adv_4",
+    "topic": "Gas Optimization and Efficiency",
+    "level": "Advanced",
+    "question": "Return the value of the `immutable` variable.",
+    "template": "pragma solidity ^0.8.0;\ncontract ImmutableTest {\n address public immutable owner;\n constructor() { owner = msg.sender; }\n function getOwner() public view returns(address) {\n return ____;\n }\n}",
+    "correctAnswer": "owner",
+    "hint": "Immutable variables are set in the constructor and can't be changed.",
+    "explanation": "Immutable variables are cheaper than state variables because their value is substituted directly into the contract's bytecode at deployment time."
+  },
+  {
+    "id": "goe_adv_5",
+    "topic": "Gas Optimization and Efficiency",
+    "level": "Advanced",
+    "question": "Get the number of elements in the array. Reading storage in a loop is expensive.",
+    "template": "pragma solidity ^0.8.0;\ncontract LoopAvoid {\n uint[] arr;\n function addMany(uint n) public {\n for (uint i = 0; i < n; i++) {\n arr.push(i);\n }\n }\n function count() public view returns(uint) { return arr.____; }\n}",
+    "correctAnswer": "length",
+    "hint": "Arrays have a property to get their size.",
+    "explanation": "Getting array length is efficient. However, it's better to avoid loops that grow indefinitely, as they can hit gas limits."
+  },
+  {
+    "id": "goe_adv_6",
+    "topic": "Gas Optimization and Efficiency",
+    "level": "Advanced",
+    "question": "Access the field from the struct loaded into storage.",
+    "template": "pragma solidity ^0.8.0;\ncontract StorageVsMemory {\n struct S { uint x; } \n S[] public items;\n function read(uint i) public view returns(uint) {\n S storage s = items[i];\n return s.____;\n }\n}",
+    "correctAnswer": "x",
+    "hint": "Use dot notation to access struct fields.",
+    "explanation": "Creating a storage pointer (`S storage s`) is cheaper than copying the struct to memory (`S memory s`), as it avoids a full data copy."
+  },
+  {
+    "id": "goe_adv_7",
+    "topic": "Gas Optimization and Efficiency",
+    "level": "Advanced",
+    "question": "Use the `constant` variable in the calculation.",
+    "template": "pragma solidity ^0.8.0;\ncontract ConstExample {\n uint constant MAX = 100;\n function maxPlus(uint v) public pure returns(uint) {\n return MAX + ____;\n }\n}",
+    "correctAnswer": "v",
+    "hint": "Add the function parameter to the constant.",
+    "explanation": "`constant` variables are a gas-saving feature because their value is compiled directly into the contract's bytecode, avoiding a storage read."
+  },
+  {
+    "id": "goe_adv_8",
+    "topic": "Gas Optimization and Efficiency",
+    "level": "Advanced",
+    "question": "Emit an event with a given ID.",
+    "template": "pragma solidity ^0.8.0;\ncontract UseEvents {\n event Log(uint indexed id);\n function emitIt(uint id) public {\n emit Log(id);\n }\n function callIt() public { emitIt(____); }\n}",
+    "correctAnswer": "1",
+    "hint": "Pass any `uint` to the function.",
+    "explanation": "Events are a cheaper way to store data off-chain than writing to contract storage. Indexed event parameters allow for efficient searching."
+  },
+  {
+    "id": "goe_adv_9",
+    "topic": "Gas Optimization and Efficiency",
+    "level": "Advanced",
+    "question": "Get the length of the `calldata` array.",
+    "template": "pragma solidity ^0.8.0;\ncontract CalldataSave {\n function f(uint[] calldata a) external pure returns (uint) {\n return a.____; \n }\n}",
+    "correctAnswer": "length",
+    "hint": "`calldata` arrays have a `.length` property.",
+    "explanation": "Using `calldata` for external function parameters is gas-efficient as it avoids copying the data to memory."
+  },
+  {
+    "id": "goe_adv_10",
+    "topic": "Gas Optimization and Efficiency",
+    "level": "Advanced",
+    "question": "Complete the boolean expression. Short-circuiting can save gas.",
+    "template": "pragma solidity ^0.8.0;\ncontract ShortCircuit {\n function either(bool a, bool b) public pure returns(bool) {\n return a || ____;\n }\n}",
+    "correctAnswer": "b",
+    "hint": "The expression is a logical OR.",
+    "explanation": "In `a || b`, if `a` is true, `b` is not evaluated, saving gas. Order your conditions from least to most expensive."
+  },
+_adv_11",
+    "topic": "Gas Optimization and Efficiency",
+    "level": "Advanced",
+    "question": "Complete the expression. Reusing storage slots can sometimes save gas.",
+    "template": "pragma solidity ^0.8.0;\ncontract ReuseSlot {\n uint public x;\n uint public y;\n function set(uint _x) public { x = _x; y = 0; }\n function getSum() public view returns(uint) { return x + ____; }\n}",
+    "correctAnswer": "y",
+    "hint": "Add the value of `y`.",
+    "explanation": "This example shows accessing two state variables. More advanced patterns can save gas by clearing and reusing storage slots within the same transaction."
+  },
+  {
+    "id": "goe_adv_12",
+    "topic": "Gas Optimization and Efficiency",
+    "level": "Advanced",
+    "question": "Complete the expression. Caching array length in a loop saves gas.",
+    "template": "pragma solidity ^0.8.0;\ncontract GasLoop {\n function sum(uint[] memory arr) public pure returns(uint total) {\n uint len = arr.length;\n for (uint i=0; i < len; i++) {\n total += arr[i];\n }\n return total + ____;\n }\n}",
+    "correctAnswer": "0",
+    "hint": "This is a placeholder to complete a valid expression.",
+    "explanation": "Caching `arr.length` in a `len` variable before the loop is cheaper than reading `.length` on every iteration."
+  },
+  {
+    "id": "goe_adv_13",
+    "topic": "Gas Optimization and Efficiency",
+    "level": "Advanced",
+qrn": "Return the state variable.",
+    "template": "pragma solidity ^0.8.0;\ncontract UseUint256 {\n uint256 public val;\n function inc() public { val += 1; }\n function show() public view returns(uint256) { return ____; }\n}",
+    "correctAnswer": "val",
+    "hint": "The state variable is named `val`.",
+    "explanation": "Using `uint` is an alias for `uint256`. While smaller `uint` types can be packed, for standalone variables `uint256` is often the most efficient."
+  },
+  {
+    "id": "goe_adv_14",
+    "topic": "Gas Optimization and Efficiency",
+    "level": "Advanced",
+    "question": "Complete the expression. Keeping computations in memory is cheaper than storage.",
+    "template": "pragma solidity ^0.8.0;\ncontract CalcOutside {\n function compute(uint a, uint b) public pure returns(uint) {\n uint c = a + b;\n uint d = c * 2;\n return d + ____;\n }\n}",
+    "correctAnswer": "0",
+    "hint": "This is a placeholder to complete a valid expression.",
+    "explanation": "This `pure` function performs all calculations using local variables (`memory`), which is much cheaper than reading from or writing to state variables (`storage`)."
+  },
+  {
+    "id": "goe_adv_15",
+    "topic": "Gas Optimization and Efficiency",
+    "level": "Advanced",
+    "question": "Complete the expression. Memory-to-memory copies can be expensive.",
+    "template": "pragma solidity ^0.8.0;\ncontract MemoryCopy {\n function copy(uint[] memory a) public pure returns(uint) {\n uint[] memory b = new uint[](a.length);\n for (uint i=0;i<a.length;i++) b[i]=a[i];\n return b.length > 0 ? b[0] + ____ : 0;\n }\n}",
+    "correctAnswer": "0",
+    "hint": "This is a placeholder to complete a valid expression.",
+    "explanation": "This function demonstrates a memory-to-memory copy. Be mindful of this pattern with large arrays, as it can consume significant gas."
+  },
+  {
+    "id": "goe_adv_16",
+    "topic": "Gas Optimization and Efficiency",
+    "level": "Advanced",
+    "question": "Get the length of the string by casting it to bytes.",
+    "template": "pragma solidity ^0.8.0;\ncontract OptimizeStrings {\n function len(string memory s) public pure returns(uint) {\n return bytes(s).____; \n }\n}",
+    "correctAnswer": "length",
+    "hint": "`bytes` arrays have a `.length` property.",
+    "explanation": "For getting the length of a string, `bytes(s).length` is the standard and efficient method."
+  },
+  {
+    "id": "goe_adv_17",
+    "topic": "Gas Optimization and Efficiency",
+    "level": "Advanced",
+    "question": "Return the small integer value.",
+    "template": "pragma solidity ^0.8.0;\ncontract SmallInts {\n uint8 public small;\n function set(uint8 v) public { small = v; }\n function get() public view returns(uint8) { return ____; }\n}",
+    "correctAnswer": "small",
+    "hint": "The state variable is `small`.",
+    "explanation": "Using smaller integer types like `uint8` can save gas if the EVM can pack multiple variables into a single storage slot. Otherwise, `uint256` is generally preferred."
+  },
+  {
+    "id": "goe_adv_18",
+    "topic": "Gas Optimization and Efficiency",
+    "level": "Advanced",
+    "question": "Access the mapping using the provided address key.",
+    "template": "pragma solidity ^0.8.0;\ncontract GasKey {\n mapping(address=>uint) public balances;\n function inc(address a, uint v) public { balances[a] += v; }\n function bal(address a) public view returns(uint) { return balances[____]; }\n}",
+    "correctAnswer": "a",
+    "hint": "The key to the mapping is the address `a`.",
+    "explanation": "Accessing a mapping with a key is an efficient operation. The gas cost is constant regardless of the mapping's size."
+  },
+  {
+    "id": "spb_adv_1",
+    "topic": "Security Patterns and Best Practices",
+    "level": "Advanced",
+    "question": "Apply the reentrancy guard to this function.",
+    "template": "pragma solidity ^0.8.0;\ncontract ReentrancyGuard {\n bool private locked;\n modifier noReentrant() {\n require(!locked, \"reentrant\");\n locked = true;\n _;\n locked = false;\n }\n mapping(address => uint) public balances;\n function withdraw(uint amount) public ____ {\n require(balances[msg.sender] >= amount, \"low\");\n balances[msg.sender] -= amount;\n (bool ok, ) = msg.sender.call{value: amount}(\"\");\n require(ok, \"failed\");\n }\n}",
+    "correctAnswer": "noReentrant",
+    "hint": "Add the modifier name to the function signature.",
+    "explanation": "The `noReentrant` modifier prevents a malicious contract from calling back into `withdraw` before the first call is finished, a common attack vector."
+  },
+  {
+    "id": "spb_adv_2",
+    "topic": "Security Patterns and Best Practices",
+    "level": "Advanced",
+    "question": "What is the name for this security pattern: updating state *before* the external call?",
+    "template": "pragma solidity ^0.8.0;\ncontract ChecksEffectsInteractions {\n mapping(address=>uint) public bal;\n function getPaid() public {\n uint amount = bal[msg.sender];\n bal[msg.sender] = 0; // Effect\n (bool s,) = msg.sender.call{value: amount}(\"\"); // Interaction\n require(s); // Check\n }\n function cashOut() public { ____(); }\n}",
+    "correctAnswer": "getPaid",
+    "hint": "Call the function that demonstrates the pattern.",
+    "explanation": "This demonstrates the 'Checks-Effects-Interactions' pattern. You perform checks, update your contract's state (Effects), and then interact with external contracts. This prevents reentrancy attacks."
+  },
+  {
+    "id": "spb_adv_3",
+    "topic": "Security Patterns and Best Practices",
+    "level": "Advanced",
+    "question": "Apply the modifier to restrict this function to the owner.",
+    "template": "pragma solidity ^0.8.0;\ncontract Ownable {\n address public owner;\n constructor() { owner = msg.sender; }\n modifier onlyOwner() { require(msg.sender == owner, \"no\"); _; }\n function setOwner(address o) public ____ { owner = o; }\n}",
+    "correctAnswer": "onlyOwner",
+    "hint": "Use the `onlyOwner` modifier.",
+    "explanation": "The `onlyOwner` modifier is a common and effective pattern for ensuring only a designated address can execute critical functions."
+  },
+  {
+    "id": "spb_adv_4",
+    "topic": "Security Patterns and Best Practices",
+    "level": "Advanced",
+    "question": "Complete the `require` statement to check if the caller is an admin.",
+    "template": "pragma solidity ^0.8.0;\ncontract LeastPrivilege {\n mapping(address=>bool) public admins;\n function setAdmin(address a) public { admins[a] = true; }\n function doAdmin() public view {\n require(____[msg.sender], \"no\");\n }\n}",
+    "correctAnswer": "admins",
+    "hint": "Check the `admins` mapping.",
+    "explanation": "This is an example of access control. Only addresses marked as `true` in the `admins` mapping can pass the `require` check."
+  },
+  {
+    "id": "spb_adv_5",
+    "topic": "Security Patterns and Best Practices",
+    "level": "Advanced",
+    "question": "Why is using `tx.origin` for authorization dangerous? Complete the `require` statement.",
+    "template": "pragma solidity ^0.8.0;\ncontract AvoidTxOrigin {\n address public admin;\n constructor() { admin = msg.sender; }\n function auth() public view {\n require(msg.sender == ____, \"phishing risk\");\n }\n function check() public { auth(); }\n}",
+    "correctAnswer": "admin",
+    "hint": "Authorization should check `msg.sender`, not `tx.origin`.",
+    "explanation": "Never use `tx.origin` for authorization. A malicious contract can trick a user into calling it, and your contract would see the user as `tx.origin`, wrongly granting permissions. Always use `msg.sender`."
+  },
+  {
+    "id": "spb_adv_6",
+    "topic": "Security Patterns and Best Practices",
+    "level": "Advanced",
+    "question": "Complete the time-based check.",
+    "template": "pragma solidity ^0.8.0;\ncontract TimeChecks {\n uint public deadline;\n function set(uint d) public { deadline = d; }\n function onlyBefore() public view {\n require(block.timestamp < ____, \"late\");\n }\n}",
+    "correctAnswer": "deadline",
+    "hint": "Compare the current block's timestamp to the `deadline`.",
+    "explanation": "Be cautious with `block.timestamp` as its value can be slightly manipulated by miners. It is not suitable for high-precision timing."
+  },
+  {
+    "id": "spb_adv_7",
+    "topic": "Security Patterns and Best Practices",
+    "level": "Advanced",
+    "question": "Call the function that performs the addition.",
+    "template": "pragma solidity ^0.8.0;\ncontract SafeMathUsage {\n function add(uint a, uint b) public pure returns(uint) {\n uint c = a + b;\n require(c >= a, \"overflow\");\n return c; \n}\n function tryAdd(uint a, uint b) public pure returns(uint) { return ____(a,b); }\n}",
+    "correctAnswer": "add",
+    "hint": "Call the `add` function.",
+    "explanation": "Solidity versions 0.8.0 and later have built-in overflow and underflow checks, making libraries like SafeMath less critical. This code shows how such a check would be implemented manually."
+  },
+  {
+    "id": "spb_adv_8",
+    "topic": "Security Patterns and Best Practices",
+    "level": "Advanced",
+    "question": "Call the function that implements the pull payment pattern.",
+    "template": "pragma solidity ^0.8.0;\ncontract PullOverPush {\n mapping(address=>uint) public owed;\n function withdraw() public {\n uint amount = owed[msg.sender];\n require(amount > 0);\n owed[msg.sender] = 0;\n (bool ok,) = msg.sender.call{value: amount}(\"\");\n require(ok);\n }\n function claim() public { ____(); }\n}",
+    "correctAnswer": "withdraw",
+    "hint": "The `claim` function should initiate the withdrawal.",
+    "explanation": "This is the 'Pull-over-Push' pattern. Instead of the contract sending (pushing) Ether, users call a function to withdraw (pull) their funds. This is safer and prevents many issues."
+  },
+  {
+    "id": "spb_adv_9",
+    "topic": "Security Patterns and Best Practices",
+    "level": "Advanced",
+    "question": "Complete the access control check.",
+    "template": "pragma solidity ^0.8.0;\ncontract SimpleAuth {\n mapping(address=>bool) public allowed;\n function allow(address a) public { allowed[a]=true; }\n function restricted() public view {\n require(____[msg.sender], \"not allowed\");\n }\n}",
+    "correctAnswer": "allowed",
+    "hint": "Check the `allowed` mapping for the caller's address.",
+    "explanation": "This is a basic but effective access control list (ACL) pattern using a mapping."
+  },
+  {
+    "id": "spb_adv_10",
+    "topic": "Security Patterns and Best Practices",
+    "level": "Advanced",
+    "question": "Complete the expression. Keeping contracts simple reduces the attack surface.",
+    "template": "pragma solidity ^0.8.0;\ncontract Simplicity {\n function doSmall() public pure returns(uint) {\n return 1;\n }\n function doBigger() public pure returns(uint) {\n return doSmall() + ____;\n }\n}",
+    "correctAnswer": "0",
+    "hint": "This is a placeholder to complete a valid expression.",
+    "explanation": "Favor simplicity. Complex code is harder to reason about and more likely to contain hidden vulnerabilities. Small, modular functions are best."
+  },
+  {
+    "id": "spb_adv_11",
+    "topic": "Security Patterns and Best Practices",
+    "level": "Advanced",
+    "question": "Call `setAge` with a valid age.",
+    "template": "pragma solidity ^0.8.0;\ncontract ValidateInputs {\n function setAge(uint age) public pure {\n require(age > 0 && age < 150, \"bad age\");\n }\n function enter() public pure { setAge(____); }\n}",
+    "correctAnswer": "30",
+    "hint": "Choose an age between 1 and 149.",
+    "explanation": "Always validate inputs, especially those from external users, to ensure they fall within expected ranges and formats."
+  },
+  {
+    "id": "spb_adv_12",
+    "topic": "Security Patterns and Best Practices",
+    "level": "Advanced",
+    "question": "Call the function that demonstrates a safe way to handle Ether.",
+    "template": "pragma solidity ^0.8.0;\ncontract FallbackSafety {\n fallback() external {}\n receive() external payable {}\n function trySend() public payable {\n (bool ok,) = address(this).call{value: msg.value}(\"\");\n require(ok);\n }\n function test() public payable { ____(); }\n}",
+    "correctAnswer": "trySend",
+    "hint": "Call the function that uses `.call`.",
+    "explanation": "Defining a `receive` function is crucial for a contract to accept Ether via simple transfers. The empty `fallback` function can be used to handle other calls."
+  },
+  {
+    "id": "spb_adv_13",
+    "topic": "Security Patterns and Best Practices",
+    "level": "Advanced",
+    "question": "Call the well-documented function.",
+    "template": "pragma solidity ^0.8.0;\ncontract AuditReady {\n /** @dev Does something important. */\n function important() public pure returns(string memory) {\n return \"ok\";\n }\n function callIt() public pure returns(string memory) { return ____(); }\n}",
+    "correctAnswer": "important",
+    "hint": "The function is named `important`.",
+    "explanation": "Clear comments and documentation (like NatSpec) are a best practice, making code easier to audit, understand, and maintain."
+  },
+  {
+    "id": "spb_adv_14",
+    "topic": "Security Patterns and Best Practices",
+    "level": "Advanced",
+    "question": "Return the state variable. Minimizing state saves gas and reduces complexity.",
+    "template": "pragma solidity ^0.8.0;\ncontract MinimizeState {\n uint public a;\n function setA(uint x) public { a = x; }\n function getA() public view returns(uint) { return ____; }\n}",
+    "correctAnswer": "a",
+    "hint": "The state variable is `a`.",
+    "explanation": "A core principle of smart contract design is to keep on-chain state to a minimum. Use events for logging and calculate values off-chain when possible."
+  },
+  {
+    "id": "spb_adv_15",
+    "topic": "Security Patterns and Best Practices",
+    "level": "Advanced",
+    "question": "This function makes an external call. What should you be careful of?",
+    "template": "pragma solidity ^0.8.0;\ncontract ExternalCheck {\n function externalCall(address target) public returns(bool) {\n (bool ok, ) = target.call(abi.encodeWithSignature(\"ping()\"));\n return ok;\n }\n function test() public { ____(address(this)); }\n}",
+    "correctAnswer": "externalCall",
+    "hint": "Call the function that performs the external interaction.",
+    "explanation": "Be aware that external calls can fail or execute malicious code. Always check the return value and follow the Checks-Effects-Interactions pattern."
+  },
+  {
+    "id": "spb_adv_16",
+    "topic": "Security Patterns and Best Practices",
+    "level": "Advanced",
+    "question": "Call the simple, well-tested function.",
+    "template": "pragma solidity ^0.8.0;\ncontract BestPractice {\n function test() public pure returns(bool) {\n return true;\n }\n function callTest() public pure returns(bool) { return ____(); }\n}",
+    "correctAnswer": "test",
+    "hint": "The function is `test`.",
+    "explanation": "Writing clear, simple, and well-tested code is one of the most important security best practices in Solidity."
   }
 ]
