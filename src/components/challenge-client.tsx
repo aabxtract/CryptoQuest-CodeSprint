@@ -108,16 +108,8 @@ export function ChallengeClient({ topic, level }: { topic: Topic; level: Level }
     setShowHint(false);
   };
 
-  if (questions.length === 0) {
-    return (
-      <div className="flex flex-col items-center justify-center h-full">
-        <Loader2 className="h-12 w-12 animate-spin text-primary" />
-        <p className="mt-4 text-muted-foreground">Loading challenge...</p>
-      </div>
-    );
-  }
-
-  const CodeSnippet = () => {
+  const CodeSnippet = React.useMemo(() => {
+    if (!currentQuestion) return null;
     const parts = currentQuestion.template.split('____');
     return (
       <pre className="bg-muted p-4 rounded-md text-sm font-code whitespace-pre-wrap">
@@ -133,13 +125,23 @@ export function ChallengeClient({ topic, level }: { topic: Topic; level: Level }
             onKeyDown={(e) => {
               if (e.key === 'Enter') handleCheckAnswer();
             }}
+            autoFocus
           />
           {parts[1]}
         </code>
       </pre>
     );
-  };
-  
+  }, [currentQuestion, userAnswer, status]);
+
+  if (questions.length === 0) {
+    return (
+      <div className="flex flex-col items-center justify-center h-full">
+        <Loader2 className="h-12 w-12 animate-spin text-primary" />
+        <p className="mt-4 text-muted-foreground">Loading challenge...</p>
+      </div>
+    );
+  }
+
   const progress = ((currentQuestionIndex) / questions.length) * 100;
 
   return (
@@ -150,7 +152,7 @@ export function ChallengeClient({ topic, level }: { topic: Topic; level: Level }
         <CardDescription>Question {currentQuestionIndex + 1} of {questions.length}</CardDescription>
       </CardHeader>
       <CardContent>
-        <CodeSnippet />
+        {CodeSnippet}
         <AnimatePresence>
         {status !== 'playing' && feedback && (
             <motion.div
