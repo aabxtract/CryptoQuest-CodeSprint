@@ -33,6 +33,7 @@ import { Progress } from '@/components/ui/progress';
 import { useProgressStore } from '@/hooks/use-progress-store';
 import type { Topic, Level } from '@/lib/types';
 import { TOPICS, LEVELS } from '@/lib/types';
+import { ModeToggle } from '@/components/mode-toggle';
 
 const topicIcons: Record<Topic, React.ElementType> = {
   'Variables & Data Types': Braces,
@@ -142,12 +143,15 @@ export default function Home() {
           <Logo className="h-6 w-6" />
           <span className="sr-only">Code Sprint</span>
         </Link>
+        <div className="ml-auto">
+            <ModeToggle />
+        </div>
       </header>
       <main className="flex-1">
         <section className="w-full py-12 md:py-24 lg:py-32">
           <div className="container px-4 md:px-6">
             <div className="flex flex-col items-center space-y-4 text-center">
-              <h1 className="text-3xl font-headline font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none">
+              <h1 className="text-3xl font-headline font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none font-pixelify">
                 Code Sprint
               </h1>
               <p className="mx-auto max-w-[700px] text-muted-foreground md:text-xl">
