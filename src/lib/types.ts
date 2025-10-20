@@ -1,4 +1,4 @@
-export const TOPICS = ['Variables & Data Types', 'Functions & Visibility', 'Mappings & Structs', 'Arrays & Loops', 'Events & Modifiers'] as const;
+export const TOPICS = ['Variables & Data Types', 'Functions & Visibility', 'Mappings & Structs', 'Arrays & Loops', 'Events & Modifiers', 'Modifiers & Require', 'Constructor & Inheritance'] as const;
 export const LEVELS = ['Easy', 'Intermediate', 'Advanced'] as const;
 
 export type Topic = typeof TOPICS[number];

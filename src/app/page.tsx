@@ -11,7 +11,8 @@ import {
   Zap,
   ChevronRight,
   Loader2,
-  Trophy,
+  ShieldCheck,
+  Building,
 } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
@@ -35,6 +36,8 @@ const topicIcons: Record<Topic, React.ElementType> = {
   'Mappings & Structs': Network,
   'Arrays & Loops': List,
   'Events & Modifiers': Zap,
+  'Modifiers & Require': ShieldCheck,
+  'Constructor & Inheritance': Building,
 };
 
 function LevelSelectDialog({

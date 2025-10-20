@@ -181,6 +181,56 @@
     "explanation": "You can directly access and modify members of a struct stored within a mapping using dot notation."
   },
   {
+    "id": "ms_int_1",
+    "topic": "Mappings & Structs",
+    "level": "Intermediate",
+    "question": "Complete the struct definition within the contract.",
+    "template": "pragma solidity ^0.8.0;\ncontract UserMapping {\n struct User {\n string name;\n uint age;\n }\n mapping(address => ______) public users;\n}",
+    "correctAnswer": "User",
+    "hint": "Reference the struct you just defined as the value type in the mapping.",
+    "explanation": "Correct! You are mapping an address to a `User` struct."
+  },
+  {
+    "id": "ms_int_2",
+    "topic": "Mappings & Structs",
+    "level": "Intermediate",
+    "question": "Provide a name for the mapping.",
+    "template": "pragma solidity ^0.8.0;\ncontract Points {\n struct Score {\n uint points;\n }\n mapping(address => Score) public ______;\n}",
+    "correctAnswer": "scores",
+    "hint": "Choose a descriptive name for the mapping that holds user scores.",
+    "explanation": "Great! `scores` is a fitting name for a mapping that stores `Score` structs."
+  },
+  {
+    "id": "ms_int_3",
+    "topic": "Mappings & Structs",
+    "level": "Intermediate",
+    "question": "Make the `students` mapping accessible from outside the contract.",
+    "template": "pragma solidity ^0.8.0;\ncontract StudentData {\n struct Student {\n string name;\n uint256 grade;\n }\n mapping(uint => Student) ______ students;\n}",
+    "correctAnswer": "public",
+    "hint": "Use a visibility specifier to create an automatic getter function.",
+    "explanation": "`public` visibility for a mapping allows anyone to query the data."
+  },
+  {
+    "id": "ms_int_4",
+    "topic": "Mappings & Structs",
+    "level": "Intermediate",
+    "question": "Choose a variable name for the private mapping.",
+    "template": "pragma solidity ^0.8.0;\ncontract Registry {\n struct Info {\n string data;\n }\n mapping(address => Info) private ______;\n}",
+    "correctAnswer": "registry",
+    "hint": "A common convention is to name the mapping after the contract's purpose.",
+    "explanation": "Using `registry` is a clear and concise name for this mapping."
+  },
+  {
+    "id": "ms_int_5",
+    "topic": "Mappings & Structs",
+    "level": "Intermediate",
+    "question": "Specify the value type for the `voters` mapping.",
+    "template": "pragma solidity ^0.8.0;\ncontract VoterList {\n struct Voter {\n bool registered;\n }\n mapping(address => ______) public voters;\n}",
+    "correctAnswer": "Voter",
+    "hint": "The mapping should store the `Voter` struct for each address.",
+    "explanation": "Correct! The mapping `voters` will store a `Voter` struct for each address key."
+  },
+  {
     "id": "a1",
     "topic": "Arrays & Loops",
     "level": "Easy",
@@ -241,6 +291,56 @@
     "explanation": "The `.pop()` method is used to remove the last element from a dynamic storage array."
   },
   {
+    "id": "al_int_1",
+    "topic": "Arrays & Loops",
+    "level": "Intermediate",
+    "question": "Add a new number to the `nums` array.",
+    "template": "pragma solidity ^0.8.0;\ncontract Numbers {\n uint[] public nums;\n function addNumber(uint _num) public {\n nums.______(_num);\n }\n}",
+    "correctAnswer": "push",
+    "hint": "Use this method to append an element to the end of a dynamic array.",
+    "explanation": "The `push` method adds an element to the end of a dynamic array."
+  },
+  {
+    "id": "al_int_2",
+    "topic": "Arrays & Loops",
+    "level": "Intermediate",
+    "question": "Get the number of elements in the `data` array.",
+    "template": "pragma solidity ^0.8.0;\ncontract Counter {\n uint[] public data;\n function count() public view returns(uint) {\n return data.______;\n }\n}",
+    "correctAnswer": "length",
+    "hint": "This property provides the size of the array.",
+    "explanation": "`.length` is used to get the number of elements in an array."
+  },
+  {
+    "id": "al_int_3",
+    "topic": "Arrays & Loops",
+    "level": "Intermediate",
+    "question": "Access the element at the current loop index.",
+    "template": "pragma solidity ^0.8.0;\ncontract Total {\n uint[] public values;\n function sum() public view returns(uint total) {\n for(uint i = 0; i < values.length; i++) {\n total += ______[i];\n }\n }\n}",
+    "correctAnswer": "values",
+    "hint": "Use the name of the array being iterated over.",
+    "explanation": "You need to access the element from the `values` array at index `i`."
+  },
+  {
+    "id": "al_int_4",
+    "topic": "Arrays & Loops",
+    "level": "Intermediate",
+    "question": "Increment the counter variable inside the loop.",
+    "template": "pragma solidity ^0.8.0;\ncontract EvenNumbers {\n uint[] public nums;\n function findEven() public view returns(uint count) {\n for(uint i = 0; i < nums.length; i++) {\n if(nums[i] % 2 == 0) {\n ______++;\n }\n }\n }\n}",
+    "correctAnswer": "count",
+    "hint": "The variable `count` is used to track the number of even numbers found.",
+    "explanation": "Incrementing `count` keeps track of how many even numbers are found in the array."
+  },
+  {
+    "id": "al_int_5",
+    "topic": "Arrays & Loops",
+    "level": "Intermediate",
+    "question": "Access the array element using the provided function parameter.",
+    "template": "pragma solidity ^0.8.0;\ncontract StorageArray {\n uint[5] public fixedArray = [1,2,3,4,5];\n function getElement(uint index) public view returns(uint) {\n return fixedArray[______];\n }\n}",
+    "correctAnswer": "index",
+    "hint": "The `index` parameter determines which element to retrieve.",
+    "explanation": "The `index` variable is used to access a specific element in `fixedArray`."
+  },
+  {
     "id": "e1",
     "topic": "Events & Modifiers",
     "level": "Easy",
@@ -299,5 +399,155 @@
     "correctAnswer": "onlyOwner",
     "hint": "Add the modifier's name after the visibility specifier.",
     "explanation": "To use a modifier, simply add its name to the function definition after the visibility."
+  },
+  {
+    "id": "mr_int_1",
+    "topic": "Modifiers & Require",
+    "level": "Intermediate",
+    "question": "This special character in a modifier represents the rest of the function's code.",
+    "template": "pragma solidity ^0.8.0;\ncontract AccessControl {\n address public owner;\n constructor() {\n owner = msg.sender;\n }\n modifier onlyOwner() {\n require(msg.sender == owner, \"Not authorized\");\n ______;\n }\n}",
+    "correctAnswer": "_",
+    "hint": "It's a single underscore.",
+    "explanation": "The `_` symbol is a placeholder for the function body where the modifier is applied."
+  },
+  {
+    "id": "mr_int_2",
+    "topic": "Modifiers & Require",
+    "level": "Intermediate",
+    "question": "Complete the require statement to ensure the deposit amount is added to the balance.",
+    "template": "pragma solidity ^0.8.0;\ncontract Deposit {\n uint public balance;\n function deposit(uint amount) public {\n require(amount > 0, \"Invalid amount\");\n balance += ______;\n }\n}",
+    "correctAnswer": "amount",
+    "hint": "Use the function's input parameter.",
+    "explanation": "The `amount` from the function input is added to the contract's `balance`."
+  },
+  {
+    "id": "mr_int_3",
+    "topic": "Modifiers & Require",
+    "level": "Intermediate",
+    "question": "Complete the division operation.",
+    "template": "pragma solidity ^0.8.0;\ncontract Checker {\n function safeDivide(uint a, uint b) public pure returns(uint) {\n require(b != 0, \"Cannot divide by zero\");\n return a / ______;\n }\n}",
+    "correctAnswer": "b",
+    "hint": "The divisor is the second parameter.",
+    "explanation": "Division by `b` is performed after ensuring `b` is not zero."
+  },
+  {
+    "id": "mr_int_4",
+    "topic": "Modifiers & Require",
+    "level": "Intermediate",
+    "question": "Use the state variable to check the age.",
+    "template": "pragma solidity ^0.8.0;\ncontract AgeValidator {\n uint public minAge = 18;\n function check(uint age) public view {\n require(age >= ______, \"Too young\");\n }\n}",
+    "correctAnswer": "minAge",
+    "hint": "Compare the input `age` with the contract's minimum age requirement.",
+    "explanation": "The `require` statement validates the input `age` against the `minAge` state variable."
+  },
+  {
+    "id": "mr_int_5",
+    "topic": "Modifiers & Require",
+    "level": "Intermediate",
+    "question": "This special character in a modifier represents the rest of the function's code.",
+    "template": "pragma solidity ^0.8.0;\ncontract Guarded {\n bool public locked;\n modifier notLocked() {\n require(!locked, \"Locked\");\n ______;\n }\n}",
+    "correctAnswer": "_",
+    "hint": "It's a single underscore.",
+    "explanation": "The `_` symbol is a placeholder for the function body where the `notLocked` modifier is applied."
+  },
+  {
+    "id": "ee_int_1",
+    "topic": "Events & Modifiers",
+    "level": "Intermediate",
+    "question": "What value should be logged in the `DataStored` event?",
+    "template": "pragma solidity ^0.8.0;\ncontract LogEvent {\n event DataStored(address user, uint amount);\n function store(uint amount) public {\n emit DataStored(msg.sender, ______);\n }\n}",
+    "correctAnswer": "amount",
+    "hint": "The event should log the `amount` passed to the `store` function.",
+    "explanation": "The `amount` parameter is passed to the event to log the stored value."
+  },
+  {
+    "id": "ee_int_2",
+    "topic": "Events & Modifiers",
+    "level": "Intermediate",
+    "question": "Use the keyword to trigger the `UserJoined` event.",
+    "template": "pragma solidity ^0.8.0;\ncontract Notify {\n event UserJoined(string name);\n function join(string memory name) public {\n ______ UserJoined(name);\n }\n}",
+    "correctAnswer": "emit",
+    "hint": "This keyword is used to fire events.",
+    "explanation": "`emit` is the keyword used to trigger an event and log its data."
+  },
+  {
+    "id": "ee_int_3",
+    "topic": "Events & Modifiers",
+    "level": "Intermediate",
+    "question": "Provide a string literal to be emitted with the `Action` event.",
+    "template": "pragma solidity ^0.8.0;\ncontract Logger {\n event Action(string action);\n function act() public {\n emit Action(\"______\");\n }\n}",
+    "correctAnswer": "Run",
+    "hint": "Any string can be used here, like \"Run\". Don't include the quotes in your answer.",
+    "explanation": "Correct! You can pass literal values like strings directly when emitting an event."
+  },
+  {
+    "id": "ee_int_4",
+    "topic": "Events & Modifiers",
+    "level": "Intermediate",
+    "question": "Pass the function's input parameter to the `Deposited` event.",
+    "template": "pragma solidity ^0.8.0;\ncontract DepositEvent {\n event Deposited(address indexed user, uint256 amount);\n function deposit(uint256 value) public {\n emit Deposited(msg.sender, ______);\n }\n}",
+    "correctAnswer": "value",
+    "hint": "The event expects the amount that was deposited.",
+    "explanation": "The `value` from the function parameter is emitted as part of the event data."
+  },
+  {
+    "id": "ee_int_5",
+    "topic": "Events & Modifiers",
+    "level": "Intermediate",
+    "question": "Complete the event emission with the recipient's address.",
+    "template": "pragma solidity ^0.8.0;\ncontract IndexedEvent {\n event Transfer(address indexed from, address indexed to, uint value);\n function send(address to, uint amount) public {\n emit Transfer(msg.sender, ______, amount);\n }\n}",
+    "correctAnswer": "to",
+    "hint": "The second parameter of the `Transfer` event is the recipient.",
+    "explanation": "The `to` address from the `send` function's parameters is used for the event."
+  },
+  {
+    "id": "ci_int_1",
+    "topic": "Constructor & Inheritance",
+    "level": "Intermediate",
+    "question": "Initialize the state variable `x` with the constructor parameter.",
+    "template": "pragma solidity ^0.8.0;\ncontract Parent {\n uint public x;\n constructor(uint _x) {\n x = ______;\n }\n}",
+    "correctAnswer": "_x",
+    "hint": "Assign the value from the constructor's input parameter.",
+    "explanation": "The state variable `x` is initialized with the value `_x` passed to the constructor."
+  },
+  {
+    "id": "ci_int_2",
+    "topic": "Constructor & Inheritance",
+    "level": "Intermediate",
+    "question": "Pass the constructor argument from the child contract to the parent `Base` contract.",
+    "template": "pragma solidity ^0.8.0;\ncontract Base {\n uint public y;\n constructor(uint _y) {\n y = _y;\n }\n}\ncontract Child is Base {\n constructor(uint val) Base(______) {}\n}",
+    "correctAnswer": "val",
+    "hint": "The parent constructor needs the value from the child's constructor.",
+    "explanation": "When inheriting, you must pass the required arguments to the parent contract's constructor."
+  },
+  {
+    "id": "ci_int_3",
+    "topic": "Constructor & Inheritance",
+    "level": "Intermediate",
+    "question": "Initialize the `name` state variable from the constructor's parameter.",
+    "template": "pragma solidity ^0.8.0;\ncontract A {\n string public name;\n constructor(string memory _name) {\n name = ______;\n }\n}",
+    "correctAnswer": "_name",
+    "hint": "The `name` variable should be set to the value of the `_name` parameter.",
+    "explanation": "The constructor sets the initial value of the `name` state variable."
+  },
+  {
+    "id": "ci_int_4",
+    "topic": "Constructor & Inheritance",
+    "level": "Intermediate",
+    "question": "Provide a hardcoded string literal to the parent `Animal` constructor.",
+    "template": "pragma solidity ^0.8.0;\ncontract Animal {\n string public species;\n constructor(string memory _species) {\n species = _species;\n }\n}\ncontract Dog is Animal {\n constructor() Animal(\"______\") {}\n}",
+    "correctAnswer": "Dog",
+    "hint": "The child `Dog` contract should identify its species as \"Dog\". Don't include the quotes in your answer.",
+    "explanation": "The `Dog` contract calls its parent `Animal` constructor with the string \"Dog\" to set its species."
+  },
+  {
+    "id": "ci_int_5",
+    "topic": "Constructor & Inheritance",
+    "level": "Intermediate",
+    "question": "Provide a literal value to the parent `BaseContract` constructor directly in the inheritance declaration.",
+    "template": "pragma solidity ^0.8.0;\ncontract BaseContract {\n uint public data;\n constructor(uint _data) {\n data = _data;\n }\n}\ncontract Extended is BaseContract(______) {}",
+    "correctAnswer": "5",
+    "hint": "You can provide constructor arguments directly where you declare inheritance.",
+    "explanation": "For simple cases, you can pass a constant value to a parent constructor directly in the `is` declaration."
   }
 ]
