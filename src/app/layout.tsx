@@ -3,7 +3,7 @@ import './globals.css';
 import { Toaster } from "@/components/ui/toaster"
 
 export const metadata: Metadata = {
-  title: 'Crypto Quest',
+  title: 'Solidity Sprint',
   description: 'Master Solidity by completing interactive code gaps.',
 };
 
