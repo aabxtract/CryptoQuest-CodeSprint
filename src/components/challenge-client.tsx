@@ -24,7 +24,7 @@ import { useToast } from "@/hooks/use-toast"
 
 type ChallengeStatus = 'playing' | 'checking' | 'correct' | 'incorrect';
 
-export function ChallengeClient({ topic, level }: { topic: Topic; level: Level }) {
+export function ChallengeClient({ topic, level, isEmbedded }: { topic: Topic; level: Level, isEmbedded: boolean }) {
   const router = useRouter();
   const { toast } = useToast();
   const { saveChallengeResult } = useProgressStore();
@@ -96,7 +96,8 @@ export function ChallengeClient({ topic, level }: { topic: Topic; level: Level }
         total: questions.length,
         time: endTime - startTime,
       });
-      router.push(`/results/${encodeURIComponent(topic)}/${encodeURIComponent(level)}`);
+      const embedQuery = isEmbedded ? '?embed=true' : '';
+      router.push(`/results/${encodeURIComponent(topic)}/${encodeURIComponent(level)}${embedQuery}`);
     }
   };
 
@@ -131,7 +132,8 @@ export function ChallengeClient({ topic, level }: { topic: Topic; level: Level }
         </code>
       </pre>
     );
-  }, [currentQuestion, userAnswer, status]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [currentQuestion, status]);
 
   if (questions.length === 0) {
     return (

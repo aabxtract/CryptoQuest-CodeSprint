@@ -11,7 +11,7 @@ import type { Topic, Level } from '@/lib/types';
 import { Trophy, Clock, Repeat, ArrowRight, Home } from 'lucide-react';
 import Confetti from 'react-confetti';
 
-export function ResultsClient({ topic, level }: { topic: Topic, level: Level }) {
+export function ResultsClient({ topic, level, isEmbedded }: { topic: Topic, level: Level, isEmbedded: boolean }) {
   const router = useRouter();
   const { lastResult, isLoaded } = useProgressStore();
   const [showConfetti, setShowConfetti] = React.useState(false);
@@ -64,12 +64,14 @@ export function ResultsClient({ topic, level }: { topic: Topic, level: Level }) 
 
   const handleNextLevel = () => {
     if (nextLevel) {
-      router.push(`/challenge/${encodeURIComponent(topic)}/${encodeURIComponent(nextLevel)}`);
+      const embedQuery = isEmbedded ? '?embed=true' : '';
+      router.push(`/challenge/${encodeURIComponent(topic)}/${encodeURIComponent(nextLevel)}${embedQuery}`);
     }
   };
 
   const handleRetry = () => {
-    router.push(`/challenge/${encodeURIComponent(topic)}/${encodeURIComponent(level)}`);
+    const embedQuery = isEmbedded ? '?embed=true' : '';
+    router.push(`/challenge/${encodeURIComponent(topic)}/${encodeURIComponent(level)}${embedQuery}`);
   };
 
   return (
@@ -100,7 +102,7 @@ export function ResultsClient({ topic, level }: { topic: Topic, level: Level }) 
           </div>
         </CardContent>
         <CardFooter className="flex flex-col sm:flex-row gap-2 justify-center">
-            <Button variant="outline" onClick={() => router.push('/')}>
+            <Button variant="outline" onClick={() => router.push(`/${isEmbedded ? '?embed=true' : ''}`)}>
                 <Home className="h-4 w-4 mr-2" />
                 Back to Topics
             </Button>

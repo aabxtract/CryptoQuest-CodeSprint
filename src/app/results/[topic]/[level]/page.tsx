@@ -10,11 +10,13 @@ type ResultsPageProps = {
     topic: string;
     level: string;
   };
+  searchParams?: { [key: string]: string | string[] | undefined };
 };
 
-export default function ResultsPage({ params }: ResultsPageProps) {
+export default function ResultsPage({ params, searchParams }: ResultsPageProps) {
   const topic = decodeURIComponent(params.topic) as Topic;
   const level = decodeURIComponent(params.level) as Level;
+  const isEmbedded = searchParams?.embed === 'true';
 
   if (!TOPICS.includes(topic) || !LEVELS.includes(level)) {
     notFound();
@@ -22,18 +24,22 @@ export default function ResultsPage({ params }: ResultsPageProps) {
 
   return (
     <div className="flex flex-col min-h-screen bg-background">
-      <header className="px-4 lg:px-6 h-16 flex items-center border-b">
-        <Link href="/" className="flex items-center justify-center" prefetch={false}>
-          <Logo className="h-6 w-6" />
-          <span className="ml-2 font-semibold font-headline">Solidity Sprint</span>
-        </Link>
-      </header>
+      {!isEmbedded && (
+        <header className="px-4 lg:px-6 h-16 flex items-center border-b">
+          <Link href="/" className="flex items-center justify-center" prefetch={false}>
+            <Logo className="h-6 w-6" />
+            <span className="ml-2 font-semibold font-headline">Solidity Sprint</span>
+          </Link>
+        </header>
+      )}
       <main className="flex-1 flex items-center justify-center p-4">
-        <ResultsClient topic={topic} level={level} />
+        <ResultsClient topic={topic} level={level} isEmbedded={isEmbedded} />
       </main>
-      <footer className="flex flex-col gap-2 sm:flex-row py-6 w-full shrink-0 items-center px-4 md:px-6 border-t">
-        <p className="text-xs text-muted-foreground">&copy; 2024 Solidity Sprint. All rights reserved.</p>
-      </footer>
+      {!isEmbedded && (
+        <footer className="flex flex-col gap-2 sm:flex-row py-6 w-full shrink-0 items-center px-4 md:px-6 border-t">
+          <p className="text-xs text-muted-foreground">&copy; 2024 Solidity Sprint. All rights reserved.</p>
+        </footer>
+      )}
     </div>
   );
 }

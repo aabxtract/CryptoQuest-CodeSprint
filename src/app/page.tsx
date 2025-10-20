@@ -2,7 +2,7 @@
 
 import * as React from 'react';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import {
   Braces,
   FunctionSquare,
@@ -54,15 +54,18 @@ function LevelSelectDialog({
   open,
   onOpenChange,
   topic,
+  isEmbedded,
 }: {
   open: boolean;
   onOpenChange: (open: boolean) => void;
   topic: Topic;
+  isEmbedded: boolean;
 }) {
   const router = useRouter();
 
   const handleStartChallenge = (level: Level) => {
-    router.push(`/challenge/${encodeURIComponent(topic)}/${encodeURIComponent(level)}`);
+    const embedQuery = isEmbedded ? '?embed=true' : '';
+    router.push(`/challenge/${encodeURIComponent(topic)}/${encodeURIComponent(level)}${embedQuery}`);
   };
 
   return (
@@ -94,7 +97,7 @@ function LevelSelectDialog({
 }
 
 
-function TopicCard({ topic }: { topic: Topic }) {
+function TopicCard({ topic, isEmbedded }: { topic: Topic; isEmbedded: boolean; }) {
   const [isModalOpen, setIsModalOpen] = React.useState(false);
   const { getTopicProgress, isLoaded } = useProgressStore();
   
@@ -129,6 +132,7 @@ function TopicCard({ topic }: { topic: Topic }) {
         open={isModalOpen}
         onOpenChange={setIsModalOpen}
         topic={topic}
+        isEmbedded={isEmbedded}
       />
     </>
   );
@@ -136,17 +140,22 @@ function TopicCard({ topic }: { topic: Topic }) {
 
 
 export default function Home() {
+  const searchParams = useSearchParams();
+  const isEmbedded = searchParams.get('embed') === 'true';
+
   return (
     <div className="flex flex-col min-h-screen bg-background">
-      <header className="px-4 lg:px-6 h-16 flex items-center border-b">
-        <Link href="#" className="flex items-center justify-center" prefetch={false}>
-          <Logo className="h-6 w-6" />
-          <span className="sr-only">Code Sprint</span>
-        </Link>
-        <div className="ml-auto">
-            <ModeToggle />
-        </div>
-      </header>
+      {!isEmbedded && (
+        <header className="px-4 lg:px-6 h-16 flex items-center border-b">
+          <Link href="#" className="flex items-center justify-center" prefetch={false}>
+            <Logo className="h-6 w-6" />
+            <span className="sr-only">Code Sprint</span>
+          </Link>
+          <div className="ml-auto">
+              <ModeToggle />
+          </div>
+        </header>
+      )}
       <main className="flex-1">
         <section className="w-full py-12 md:py-24 lg:py-32">
           <div className="container px-4 md:px-6">
@@ -164,15 +173,17 @@ export default function Home() {
           <div className="container px-4 md:px-6">
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
               {TOPICS.map((topic) => (
-                <TopicCard key={topic} topic={topic} />
+                <TopicCard key={topic} topic={topic} isEmbedded={isEmbedded} />
               ))}
             </div>
           </div>
         </section>
       </main>
-      <footer className="flex flex-col gap-2 sm:flex-row py-6 w-full shrink-0 items-center px-4 md:px-6 border-t">
-        <p className="text-xs text-muted-foreground">&copy; 2024 Code Sprint. All rights reserved.</p>
-      </footer>
+      {!isEmbedded && (
+        <footer className="flex flex-col gap-2 sm:flex-row py-6 w-full shrink-0 items-center px-4 md:px-6 border-t">
+          <p className="text-xs text-muted-foreground">&copy; 2024 Code Sprint. All rights reserved.</p>
+        </footer>
+      )}
     </div>
   );
 }
