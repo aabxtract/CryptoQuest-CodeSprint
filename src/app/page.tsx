@@ -104,7 +104,7 @@ function TopicCard({ topic }: { topic: Topic }) {
     <>
       <Card className="hover:shadow-md transition-shadow duration-300 group">
         <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-          <CardTitle className="text-lg font-headline font-semibold">{topic}</CardTitle>
+          <CardTitle className="text-lg font-semibold">{topic}</CardTitle>
           <Icon className="h-6 w-6 text-muted-foreground" />
         </CardHeader>
         <CardContent>
