@@ -250,7 +250,8 @@
     "hint": "This function appends an element to a dynamic array.",
     "explanation": "The `.push()` method is used to add an element to the end of a dynamic array."
   },
-_int_1",
+  {
+    "id": "al_int_1",
     "topic": "Arrays & Loops",
     "level": "Intermediate",
     "question": "Add a new number to the `nums` array.",
@@ -823,7 +824,8 @@ _int_1",
     "id": "luf_adv_13",
     "topic": "Libraries and Using For",
     "level": "Advanced",
-qos": "pragma solidity ^0.8.0;\nlibrary ArrOps {\n function last(uint[] storage a) internal view returns(uint) { return a[a.length - 1]; }\n}\ncontract LastItem {\n using ArrOps for uint[];\n uint[] arr;\n function getLast() public view returns(uint) {\n return arr.____();\n }\n}",
+"question": "Use the attached library to get the last element of the array.",
+    "template": "pragma solidity ^0.8.0;\nlibrary ArrOps {\n function last(uint[] storage a) internal view returns(uint) { return a[a.length - 1]; }\n}\ncontract LastItem {\n using ArrOps for uint[];\n uint[] arr;\n function getLast() public view returns(uint) {\n return arr.____();\n }\n}",
     "correctAnswer": "last",
     "hint": "The `ArrOps` library provides the `last` function.",
     "explanation": "The function `last` is called on the `arr` array as `arr.last()`."
@@ -1148,7 +1150,8 @@ qos": "pragma solidity ^0.8.0;\nlibrary ArrOps {\n function last(uint[] storage 
     "hint": "The expression is a logical OR.",
     "explanation": "In `a || b`, if `a` is true, `b` is not evaluated, saving gas. Order your conditions from least to most expensive."
   },
-_adv_11",
+  {
+    "id": "goe_adv_11",
     "topic": "Gas Optimization and Efficiency",
     "level": "Advanced",
     "question": "Complete the expression. Reusing storage slots can sometimes save gas.",
@@ -1171,7 +1174,7 @@ _adv_11",
     "id": "goe_adv_13",
     "topic": "Gas Optimization and Efficiency",
     "level": "Advanced",
-qrn": "Return the state variable.",
+"question": "Return the state variable.",
     "template": "pragma solidity ^0.8.0;\ncontract UseUint256 {\n uint256 public val;\n function inc() public { val += 1; }\n function show() public view returns(uint256) { return ____; }\n}",
     "correctAnswer": "val",
     "hint": "The state variable is named `val`.",
@@ -1388,3 +1391,5 @@ qrn": "Return the state variable.",
     "explanation": "Writing clear, simple, and well-tested code is one of the most important security best practices in Solidity."
   }
 ]
+
+    
