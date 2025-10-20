@@ -1,0 +1,303 @@
+
+[
+  {
+    "id": "v1",
+    "topic": "Variables & Data Types",
+    "level": "Easy",
+    "question": "Declare an unsigned integer variable named 'myNumber' and initialize it to 10.",
+    "template": "____ myNumber = 10;",
+    "correctAnswer": "uint",
+    "hint": "Unsigned integers are declared using the 'uint' keyword.",
+    "explanation": "'uint' is the correct keyword for declaring an unsigned integer, a common data type for non-negative numbers."
+  },
+  {
+    "id": "v2",
+    "topic": "Variables & Data Types",
+    "level": "Easy",
+    "question": "Declare a string variable 'message' with the value 'Hello World'.",
+    "template": "string ____ = \"Hello World\";",
+    "correctAnswer": "message",
+    "hint": "Variable names typically follow the data type.",
+    "explanation": "Correct! You've declared a string variable named 'message'."
+  },
+  {
+    "id": "v3",
+    "topic": "Variables & Data Types",
+    "level": "Intermediate",
+    "question": "Declare a public address variable named 'owner'.",
+    "template": "address ____ owner;",
+    "correctAnswer": "public",
+    "hint": "Use a visibility specifier to make the variable readable from outside the contract.",
+    "explanation": "'public' is a visibility specifier that automatically creates a getter function for the variable."
+  },
+  {
+    "id": "v4",
+    "topic": "Variables & Data Types",
+    "level": "Intermediate",
+    "question": "Declare a constant variable 'VERSION' of type uint, and set its value to 1.",
+    "template": "uint ____ VERSION = 1;",
+    "correctAnswer": "constant",
+    "hint": "This keyword ensures the variable's value cannot be changed after compilation.",
+    "explanation": "Correct! `constant` variables are a gas-efficient way to store values that never change."
+  },
+  {
+    "id": "v5",
+    "topic": "Variables & Data Types",
+    "level": "Advanced",
+    "question": "Initialize a fixed-size byte array of 32 bytes named 'data'.",
+    "template": "____ data;",
+    "correctAnswer": "bytes32",
+    "hint": "This is a value type for storing a sequence of bytes.",
+    "explanation": "`bytes32` is a fixed-size byte array. It's more gas-efficient than `bytes` or `string` for short data."
+  },
+  {
+    "id": "v6",
+    "topic": "Variables & Data Types",
+    "level": "Advanced",
+    "question": "Declare an immutable address named 'CREATOR' and set its value in the constructor.",
+    "template": "address ____ CREATOR;",
+    "correctAnswer": "immutable",
+    "hint": "This keyword allows a variable to be assigned only once, in the constructor.",
+    "explanation": "`immutable` variables are set at contract creation and cannot be changed, saving gas."
+  },
+  {
+    "id": "f1",
+    "topic": "Functions & Visibility",
+    "level": "Easy",
+    "question": "Complete the function declaration for a public function named 'myFunction'.",
+    "template": "function myFunction() ____ {}",
+    "correctAnswer": "public",
+    "hint": "This visibility makes the function callable both internally and externally.",
+    "explanation": "`public` allows the function to be called by anyone."
+  },
+  {
+    "id": "f2",
+    "topic": "Functions & Visibility",
+    "level": "Easy",
+    "question": "Complete the function to return a uint value.",
+    "template": "function getNumber() public pure ____ (uint) {}",
+    "correctAnswer": "returns",
+    "hint": "This keyword specifies the data type of the value the function will return.",
+    "explanation": "The `returns` keyword is used to define the return types of a function."
+  },
+  {
+    "id": "f3",
+    "topic": "Functions & Visibility",
+    "level": "Intermediate",
+    "question": "Make this function only callable from within the same contract.",
+    "template": "function _helper() ____ {}",
+    "correctAnswer": "private",
+    "hint": "This visibility specifier restricts access to the current contract only.",
+    "explanation": "`private` functions can only be called from other functions within the same contract."
+  },
+  {
+    "id": "f4",
+    "topic": "Functions & Visibility",
+    "level": "Intermediate",
+    "question": "This function should not read from or modify the state. What keyword should be used?",
+    "template": "function add(uint a, uint b) public ____ returns (uint) { return a + b; }",
+    "correctAnswer": "pure",
+    "hint": "This state mutability keyword is for functions that don't interact with the blockchain's state.",
+    "explanation": "`pure` functions do not read or write to the contract's state, making them highly predictable."
+  },
+  {
+    "id": "f5",
+    "topic": "Functions & Visibility",
+    "level": "Advanced",
+    "question": "A function that can receive Ether must be marked as ____.",
+    "template": "receive() external ____ {}",
+    "correctAnswer": "payable",
+    "hint": "This keyword is required for functions to accept Ether payments.",
+    "explanation": "The `payable` keyword is essential for any function, including `receive()` and `fallback()`, designed to accept Ether."
+  },
+  {
+    "id": "f6",
+    "topic": "Functions & Visibility",
+    "level": "Advanced",
+    "question": "This function should be callable by other contracts, but not by users directly via a transaction. What visibility should be used?",
+    "template": "function utility() ____ {}",
+    "correctAnswer": "external",
+    "hint": "This visibility is more gas-efficient than `public` for functions called from other contracts.",
+    "explanation": "`external` is similar to `public`, but is cheaper when the function is called from outside the contract."
+  },
+  {
+    "id": "m1",
+    "topic": "Mappings & Structs",
+    "level": "Easy",
+    "question": "Define a mapping from addresses to unsigned integers named 'balances'.",
+    "template": "____(address => uint) public balances;",
+    "correctAnswer": "mapping",
+    "hint": "This keyword creates a key-value store.",
+    "explanation": "`mapping` is used to create hash tables or dictionaries in Solidity."
+  },
+  {
+    "id": "m2",
+    "topic": "Mappings & Structs",
+    "level": "Easy",
+    "question": "Define a struct named 'User' with a uint 'id' and a bool 'isActive'.",
+    "template": "____ User { uint id; bool isActive; }",
+    "correctAnswer": "struct",
+    "hint": "This keyword lets you create custom complex data types.",
+    "explanation": "`struct` allows you to group several variables into a custom-defined type."
+  },
+  {
+    "id": "m3",
+    "topic": "Mappings & Structs",
+    "level": "Intermediate",
+    "question": "Access the 'balance' of 'msg.sender' from the 'balances' mapping.",
+    "template": "uint myBalance = balances[____];",
+    "correctAnswer": "msg.sender",
+    "hint": "This global variable holds the address of the person calling the function.",
+    "explanation": "`msg.sender` is a crucial global variable that provides the address of the current external caller."
+  },
+  {
+    "id": "m4",
+    "topic": "Mappings & Structs",
+    "level": "Intermediate",
+    "question": "Create a new 'User' struct in memory.",
+    "template": "User memory newUser = User(1, ____);",
+    "correctAnswer": "true",
+    "hint": "Initialize the 'isActive' boolean field.",
+    "explanation": "When creating a struct instance, you must provide values for all its members in the order they are defined."
+  },
+  {
+    "id": "m5",
+    "topic": "Mappings & Structs",
+    "level": "Advanced",
+    "question": "Declare a nested mapping from an address to another mapping of uint to bool.",
+    "template": "mapping(address => ____(uint => bool)) public userFlags;",
+    "correctAnswer": "mapping",
+    "hint": "You can nest mappings to create more complex data structures.",
+    "explanation": "Nested mappings are powerful for creating multi-dimensional lookups, like user-specific flags."
+  },
+  {
+    "id": "m6",
+    "topic": "Mappings & Structs",
+    "level": "Advanced",
+    "question": "Update a struct in a mapping. Set the 'isActive' flag of a 'User' struct to false.",
+    "template": "users[msg.sender].____ = false;",
+    "correctAnswer": "isActive",
+    "hint": "Use dot notation to access and modify a member of a struct stored in a mapping.",
+    "explanation": "You can directly access and modify members of a struct stored within a mapping using dot notation."
+  },
+  {
+    "id": "a1",
+    "topic": "Arrays & Loops",
+    "level": "Easy",
+    "question": "Declare a dynamic array of unsigned integers named 'scores'.",
+    "template": "uint[] ____ scores;",
+    "correctAnswer": "public",
+    "hint": "Making the array public allows external access.",
+    "explanation": "Declaring an array as `public` automatically creates a getter function to read its elements."
+  },
+  {
+    "id": "a2",
+    "topic": "Arrays & Loops",
+    "level": "Easy",
+    "question": "Add the number 100 to the end of the 'scores' dynamic array.",
+    "template": "scores.____(100);",
+    "correctAnswer": "push",
+    "hint": "This function appends an element to a dynamic array.",
+    "explanation": "The `.push()` method is used to add an element to the end of a dynamic array."
+  },
+  {
+    "id": "a3",
+    "topic": "Arrays & Loops",
+    "level": "Intermediate",
+    "question": "Declare a fixed-size memory array of 5 addresses.",
+    "template": "address[5] ____ myAddresses;",
+    "correctAnswer": "memory",
+    "hint": "This keyword specifies that the array's data is stored temporarily during function execution.",
+    "explanation": "The `memory` keyword is required for declaring arrays of complex types (like `address` or `string`) within functions."
+  },
+  {
+    "id": "a4",
+    "topic": "Arrays & Loops",
+    "level": "Intermediate",
+    "question": "Start a for loop that iterates from 0 up to (but not including) 10.",
+    "template": "for (uint i = 0; ____; i++) {}",
+    "correctAnswer": "i < 10",
+    "hint": "The second part of a for loop is the condition that keeps the loop running.",
+    "explanation": "The condition `i < 10` ensures the loop executes 10 times, for `i` from 0 to 9."
+  },
+  {
+    "id": "a5",
+    "topic": "Arrays & Loops",
+    "level": "Advanced",
+    "question": "Get the length of the 'scores' array.",
+    "template": "uint totalScores = scores.____;",
+    "correctAnswer": "length",
+    "hint": "This property returns the number of elements in an array.",
+    "explanation": "The `.length` property is a built-in way to find out the size of an array."
+  },
+  {
+    "id": "a6",
+    "topic": "Arrays & Loops",
+    "level": "Advanced",
+    "question": "Remove the last element from a dynamic array named 'items'.",
+    "template": "items.____();",
+    "correctAnswer": "pop",
+    "hint": "This array method removes and returns the last element, reducing the array's length.",
+    "explanation": "The `.pop()` method is used to remove the last element from a dynamic storage array."
+  },
+  {
+    "id": "e1",
+    "topic": "Events & Modifiers",
+    "level": "Easy",
+    "question": "Declare an event named 'Transfer' that logs a 'from' address, a 'to' address, and a 'value' uint.",
+    "template": "____ Transfer(address from, address to, uint value);",
+    "correctAnswer": "event",
+    "hint": "This keyword is used to declare events.",
+    "explanation": "Events are a way for smart contracts to communicate with front-end applications that something has happened on the blockchain."
+  },
+  {
+    "id": "e2",
+    "topic": "Events & Modifiers",
+    "level": "Easy",
+    "question": "Emit the 'Transfer' event.",
+    "template": "____ Transfer(msg.sender, _to, _amount);",
+    "correctAnswer": "emit",
+    "hint": "This keyword triggers an event.",
+    "explanation": "You must use the `emit` keyword to fire an event and log its data."
+  },
+  {
+    "id": "e3",
+    "topic": "Events & Modifiers",
+    "level": "Intermediate",
+    "question": "Declare a modifier named 'onlyOwner'.",
+    "template": "____ onlyOwner { require(msg.sender == owner); _; }",
+    "correctAnswer": "modifier",
+    "hint": "This keyword is used to create reusable checks for functions.",
+    "explanation": "Modifiers are reusable pieces of code that can run before and/or after a function call, commonly used for access control."
+  },
+  {
+    "id": "e4",
+    "topic": "Events & Modifiers",
+    "level": "Intermediate",
+    "question": "In a modifier, where does the modified function's body get executed?",
+    "template": "modifier myModifier { // code before \n ____; \n // code after }",
+    "correctAnswer": "_",
+    "hint": "This special symbol is a placeholder for the function code.",
+    "explanation": "The single underscore `_` is a special character in a modifier that represents the body of the function being modified."
+  },
+  {
+    "id": "e5",
+    "topic": "Events & Modifiers",
+    "level": "Advanced",
+    "question": "Index the 'from' and 'to' parameters in the 'Transfer' event to make them searchable.",
+    "template": "event Transfer(address ____ from, address ____ to, uint value);",
+    "correctAnswer": "indexed",
+    "hint": "This keyword allows you to filter for events based on the value of the parameter.",
+    "explanation": "`indexed` parameters are stored in a special data structure in the logs, allowing you to efficiently search for specific events."
+  },
+  {
+    "id": "e6",
+    "topic": "Events & Modifiers",
+    "level": "Advanced",
+    "question": "Apply the 'onlyOwner' modifier to the 'withdraw' function.",
+    "template": "function withdraw() public ____ {}",
+    "correctAnswer": "onlyOwner",
+    "hint": "Add the modifier's name after the visibility specifier.",
+    "explanation": "To use a modifier, simply add its name to the function definition after the visibility."
+  }
+]
