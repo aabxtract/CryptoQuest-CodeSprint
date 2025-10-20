@@ -1,5 +1,4 @@
-# Firebase Studio
+#Code Sprint 
 
-This is a NextJS starter in Firebase Studio.
-
-To get started, take a look at src/app/page.tsx.
+a segment in the crypto quest app where devs and people will tarin on their knowledge of solidity 
+learn, unlearn and relearn 
